@@ -1,24 +1,48 @@
-# README
+# weathes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 【サイト概要】
+天気予報をチェックして、その日のコーディネイトを投稿できるECサイト
 
-Things you may want to cover:
+### ◆サイトテーマ
+朝起きて最初の悩み、今日はどんな洋服を着ていくべきか、、、
+毎日のスタートを気持ちよく、そして準備時間を短縮して有意義な時間で楽しいことをしましょう！
 
-* Ruby version
 
-* System dependencies
+### ◆テーマを選んだ理由
+* 1日のスタートで最初にやってくる悩み
+* 外出先の天気によってどんな洋服も持っていけばいいのか
+* 季節の変わり目に長袖を選んで後悔してしまった
 
-* Configuration
+など、私自身の悩みの種でもありました。
 
-* Database creation
 
-* Database initialization
+参考になるような写真をパッとみれるようなものがあれば助かるなぁ、と思ったことがきっかけでこのサイトを考案しました。
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### ◆ターゲットユーザ
+毎日お仕事を頑張っている方、休日はとにかく何も考えたくない方に
 
-* Deployment instructions
 
-* ...
+### ◆主な利用シーン
+__隙間時間にすぐ見られる！__
+
+
+* ユーザーの住まい周辺から絞り込みをし、今日の天気に合わせて他のユーザーがどんなコーディネイトなのかを参考に
+* 洋服のテイストが似ている方や参考にしたい方がいれば、チャット機能で交流もできる
+* 休日に少し遠出する際、地域によっては気温や天候も変わってくるので事前にどんな洋服を準備すべきか調べることが可能
+* 似てるアイテムを持っている人のスタイリングをみることで、着回しの幅も広がる
+
+
+## 【設計書】
+
+
+## 【開発環境】
+- OS：
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+
+## 【使用素材】
+> 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+> 使用しない場合は、使用素材の項目をREADMEから削除してください。

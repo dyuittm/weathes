@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  namespace :customer do
-    get 'homes/top'
-  end
+
   devise_for :admins, skip: [:registrations], controllers: {
     sessions: "admin/sessions"
   }
@@ -10,5 +8,24 @@ Rails.application.routes.draw do
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
   }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :admin do
+    resources :customers, only:[:show, :index, :edit, :update]
+    resources :posts, only:[:show, :index, :edit, :update]
+  end
+
+  root to: "customer/homes#top"
+  get '/about' => 'customer/homes#about'
+
+  scope module: :customer do
+    resources :customers, only:[:show, :edit, :update]
+    get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+    resources :posts, except:[:new] do
+      resources :book_comments, only: [:create, :destroy]
+    end
+  end
+
+  get "search" => "searches#search"
+
 end

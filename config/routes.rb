@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :posts, except:[:new] do
-      resources :book_comments, only: [:create, :destroy]
+      resources :post_comments, only: [:create, :destroy]
     end
   end
 

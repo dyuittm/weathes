@@ -18,11 +18,16 @@ Rails.application.routes.draw do
   get '/about' => 'customer/homes#about'
 
   scope module: :customer do
-    resources :customers, only:[:show, :edit, :update]
-    get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+    resources :customers, only:[:show, :edit, :update] do
+      get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+      patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as:'followings'
+      get 'followers' => 'relationships#followers', as:'followers'
+    end
     resources :posts, except:[:new] do
       resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
   end
 

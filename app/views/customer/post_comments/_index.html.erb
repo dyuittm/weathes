@@ -5,7 +5,7 @@
       <td>
         <%= link_to customer_path(post_comment.customer) do %>
           <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
-          <%= post_comment.customer.name %>
+          <%= post_comment.customer.last_name %>
         <% end %>
       </td>
       <td><%= post_comment.comment %></td>

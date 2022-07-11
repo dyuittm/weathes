@@ -2,20 +2,19 @@
   <div class='row'>
      <div class='col-md-8 offset-md-1'>
   		<h2>投稿詳細</h2>
-  		<table class='table'>
+  		<table>
   		  <tr>
           <td>
             <%= link_to(@post.customer) do %>
               <%= image_tag @post.customer.get_profile_image, size:"100x100" %><br>
-              <%= @post.customer.name %>
+              <%= @post.customer.last_name %>
             <% end %>
           </td>
-          <td><%= link_to @post.title, @post %></td>
+          <td><%= @post.title %></td>
           <td><%= @post.body %></td>
           <td>コメント数: <%= @post.post_comments.count %></td>
           <td class="favorite_btn_<%= @post.id %>">
-            <%= render "favorites/favorite-btn", post: @post %>
-          </td>
+            <%= render "customer/favorites/favorite-btn", post: @post %>
           </td>
           <% if @post.customer == current_customer %>
             <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
@@ -24,10 +23,10 @@
         </tr>
       </table>
       <div class="comments-area">
-        <%= render "post_comments/index", post: @post %>
+        <%= render 'customer/post_comments/index', post: @post %>
       </div>
       <div class="new-comment">
-        <%= render "post_comments/form", post: @post, post_comment: @post_comment %>
+        <%= render 'customer/post_comments/form', post: @post, post_comment: @post_comment %>
       </div>
     </div>
   </div>

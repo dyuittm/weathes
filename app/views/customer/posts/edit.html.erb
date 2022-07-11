@@ -1,0 +1,24 @@
+<div class="col-sm-4">
+  <h3>編集</h3>
+  <%= form_with model: @post, url: post_path, method: :patch, local:true do |f| %>
+
+    <div class="form-group row">
+      <%= f.label :画像, class: 'col-sm-3 control-label' %><br />
+      <%= f.file_field :post_image, class: 'image' %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :タイトル, class: 'col-sm-3 control-label' %><br />
+      <%= f.text_field :title, class: 'rounded col-sm-5' %>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :本文, class: 'col-sm-3 control-label' %><br />
+      <%= f.text_area :body, class: 'rounded col-sm-5' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "新規登録",class: "btn btn-success btn-lg col-sm-3 mx-auto d-block" %>
+    </div>
+  <% end %>
+</div>

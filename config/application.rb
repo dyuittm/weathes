@@ -18,6 +18,8 @@ module Weathes
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    #投稿画像の編集の際に削除・追加ができる
     config.active_storage.replace_on_assign_to_many = false
   end
 end

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   scope module: :customer do
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
-    resources :customers, only:[:show, :edit, :update] do
+    resources :customers, only:[:show, :index, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'follow' => 'relationships#follow', as:'follow'
     end

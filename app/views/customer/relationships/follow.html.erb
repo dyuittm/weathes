@@ -11,7 +11,7 @@
     <tbody>
       <% @customers_followers.each do |customer| %>
         <tr>
-          <td><%= image_tag customer.get_profile_image, size:'50×50' %></td>
+          <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: "100x100" %></td>
           <td><%= customer.last_name %></td>
           <td>フォロワー数: <%= customer.followers.count %></td>
           <td><%= link_to "Show", customer, class: "customer_#{current_customer}" %></td>

@@ -43,7 +43,7 @@ class Customer::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to customer_path(current_customer)
   end
 
   private

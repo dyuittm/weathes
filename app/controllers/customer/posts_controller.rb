@@ -14,7 +14,6 @@ class Customer::PostsController < ApplicationController
   end
 
   def index
-    @post = Post.new
     @posts = Post.all
   end
 
@@ -33,6 +32,13 @@ class Customer::PostsController < ApplicationController
     else
       render :edit
     end
+
+    if params[:post][:image_ids]
+      params[:post][:image_ids].each do |image_id|
+        image = @post.post_images.find(image_id)
+        image.purge
+      end
+    end
   end
 
   def destroy
@@ -42,7 +48,7 @@ class Customer::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :post_iamge)
+    params.require(:post).permit(:title, :body, post_images: [])
   end
   #only login_user
   def ensure_correct_customer

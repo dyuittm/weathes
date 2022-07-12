@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     sessions: 'customer/sessions'
   }
 
+  devise_scope :customer do
+    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
+  end
+
   namespace :admin do
     resources :customers, only:[:show, :index, :edit, :update]
     resources :posts, only:[:show, :index, :edit, :update]
@@ -22,8 +26,7 @@ Rails.application.routes.draw do
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only:[:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings', as:'followings'
-      get 'followers' => 'relationships#followers', as:'followers'
+      get 'follow' => 'relationships#follow', as:'follow'
     end
     resources :posts, except:[:new] do
       resources :post_comments, only: [:create, :destroy]
@@ -32,5 +35,4 @@ Rails.application.routes.draw do
   end
 
   get "search" => "searches#search"
-
 end

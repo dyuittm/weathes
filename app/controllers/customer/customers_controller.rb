@@ -7,6 +7,8 @@ class Customer::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
+    @post_new = Post.new
+    @posts = @customer.posts
   end
 
   def edit
@@ -15,7 +17,7 @@ class Customer::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), flash[:notice] = "更新しました"
+      redirect_to customer_path(@customer), notice: "更新しました"
     else
       render :edit
     end
@@ -29,7 +31,7 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to root_path, flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path, notice: "退会処理を実行いたしました"
   end
 
   private

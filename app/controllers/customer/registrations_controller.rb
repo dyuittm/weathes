@@ -62,7 +62,7 @@ class Customer::RegistrationsController < Devise::RegistrationsController
   # end
 
   def after_sign_up_path_for(resource)
-    posts_path
+    customer_path(current_customer)
   end
 
   protected

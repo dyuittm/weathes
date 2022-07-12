@@ -1,0 +1,33 @@
+<table class='table'>
+  <tr><%= image_tag customer.get_profile_image, size:'100x100' %></tr>
+  <tr>
+	  <th>name</th>
+	  <th><%= customer.last_name %></th>
+  </tr>
+  <tr>
+	  <th>introduction</th>
+	  <th><%= customer.introduction %></th>
+  </tr>
+    <tr>
+      <th>follows</th>
+      <th><%= link_to customer.followings.count, customer_follow_path(customer.id) %></th>
+    </tr>
+    <tr>
+      <th>followers</th>
+      <th><%= link_to customer.followers.count, customer_follow_path(customer.id) %></th>
+    </tr>
+</table>
+
+<div class='row'>
+  <% if customer == current_customer  %>
+    <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block edit_customer_#{customer.id}" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  <% else %>
+    <% if current_customer.following?(customer) %>
+      <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "btn btn-success w-100" %>
+    <% else %>
+      <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: "btn btn-info w-100" %>
+    <% end %>
+  <% end %>
+</div>

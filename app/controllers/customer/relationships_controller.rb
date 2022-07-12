@@ -10,14 +10,10 @@ class Customer::RelationshipsController < ApplicationController
     redirect_to request.referer
   end
 
-  def followings
+  def follow
     customer = Customer.find(params[:customer_id])
-    @customers = customer.followings
-  end
-
-  def followers
-    customer = Customer.find(params[:customer_id])
-    @customers = customer.followers
+    @customers_followings = customer.followings
+    @customers_followers = customer.followers
   end
 
 end

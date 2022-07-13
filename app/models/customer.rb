@@ -14,13 +14,6 @@ class Customer < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-
-  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-
-  has_many :followings, through: :relationships, source: :followed
-  has_many :followers, through: :reverse_of_relationships, source: :follower
-
   has_one_attached :profile_image
 
   validates :last_name, length: {in: 1..25}, uniqueness: true
@@ -44,7 +37,7 @@ class Customer < ApplicationRecord
   def following?(customer)
     followings.include?(customer)
   end
-　#guestuser existing data or non-existent data
+
   def self.guest
     find_or_create_by!(prefecture_id: [1], email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
@@ -54,6 +47,14 @@ class Customer < ApplicationRecord
       customer.last_name_kana = "ユーザー"
       customer.user_name = "guestuser"
       customer.prefecture_id = 1
+    end
+  end
+
+  def self.search_for(content, method)
+    if method == 'partial'
+      Customer.where('user_name LIKE ?', '%'+content+'%')
+    else
+      Customer.all
     end
   end
 

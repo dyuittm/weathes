@@ -7,8 +7,8 @@ class Post < ApplicationRecord
 
   has_many_attached :post_images
 
-  validates :title, length: {in: 1..50}
-  validates :body, length: {in: 1..200}
+  validates :title, length: {in: 1..50}, presence:true
+  validates :body, length: {in: 1..200}, presence:true
   validate :validate_number_of_files
   # validate :post_images, presence: true
 
@@ -19,6 +19,14 @@ class Post < ApplicationRecord
   def validate_number_of_files
     return if post_images.length <= FILE_NUMBER_LIMIT
     errors.add(:post_images, "に添付できる画像は#{FILE_NUMBER_LIMIT}件までです。")
+  end
+
+  def self.search_for(content, method)
+    if method == 'partial'
+      Post.where('title LIKE ?', '%'+content+'%')
+    else
+      Post.all
+    end
   end
 
 end

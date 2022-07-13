@@ -1,51 +1,78 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-light border-bottom border border-secondary">
     <div class="container">
-      <nav>
-        <div class="float-right">
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav d-flex align-items-right">
-              <% if customer_signed_in? %>
-                <li class="nav-item mr-3">
-                  <%= link_to 'マイページ', customer_path(current_customer), class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to '投稿一覧', posts_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to 'ユーザー一覧', customers_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-              <% elsif admin_signed_in? %>
-                <li class="nav-item mr-3">
-                  <%= link_to 'ユーザー一覧', admin_customers_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to '投稿一覧', admin_posts_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-              <% else %>
-                <li class="nav-item mr-3">
-                  <%= link_to 'About', about_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to '新規登録', new_customer_registration_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to 'ログイン', new_customer_session_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' %>
-                </li>
-                <li class="nav-item mr-3">
-                  <%= link_to 'ゲストログイン（閲覧用）', customer_guest_sign_in_path, class: "btn btn-sm btn-outline-secondary nav-link text-dark", method: :post %>
-                </li>
+      <a class="navbar-brand" href="/"><span>weathes</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <p id="customer_name">ようこそ、<%= current_customer.user_name %>さん！</p>
+            <li class="nav-item mr-3">
+              <%= link_to customer_path(current_customer), class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-regular fa-face-grin-wide"></i>Mypage
               <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to posts_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-regular fa-images"></i>Posts
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to customers_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-users"></i>Users
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to destroy_customer_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-right-from-bracket"></i>Logout
+              <% end %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <p id="admin_name">こちらは管理者専用ページです</p>
+            <li class="nav-item mr-3">
+              <%= link_to admin_customers_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-users"></i>Users
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to admin_posts_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-regular fa-images"></i>Posts
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-right-from-bracket"></i>Logout
+              <% end %>
+            </li>
+          <% else %>
+            <li class="nav-item mr-3">
+              <%= link_to about_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-book"></i>About
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to new_customer_registration_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-user-plus"></i>signup
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to new_customer_session_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
+                <i class="fa-solid fa-right-to-bracket"></i>Login
+              <% end %>
+            </li>
+            <li class="nav-item mr-3">
+              <%= link_to customer_guest_sign_in_path, class: "btn btn-sm btn-outline-secondary nav-link text-dark", method: :post do %>
+                <i class="fa-regular fa-circle-user"></i>Guest
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="">
+        <%= render 'searches/form' %>
+      </div>
     </div>
   </nav>
 </header>

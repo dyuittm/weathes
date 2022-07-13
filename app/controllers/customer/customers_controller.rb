@@ -1,5 +1,6 @@
 class Customer::CustomersController < ApplicationController
   before_action :ensure_correct_customer, only: [:edit, :update, :withdraw]
+   before_action :ensure_guest_user, only: [:edit]
 
   def index
     @customers = Customer.all
@@ -43,6 +44,14 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     unless @customer == current_customer
       redirect_to root_path
+    end
+  end
+
+  #guestuser cannot be edited
+  def ensure_guest_user
+    @customer = Customer.find(params[:id])
+    if @customer.user_name == "guestuser"
+      redirect_to customer_path(current_customer) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 

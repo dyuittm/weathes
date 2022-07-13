@@ -3,9 +3,16 @@
     <% post.post_comments.each do |post_comment| %>
     <tr>
       <td>
-        <%= link_to customer_path(post_comment.customer) do %>
-          <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
-          <%= post_comment.customer.last_name %>
+        <% if admin_signed_in? %>
+          <%= link_to admin_customer_path(post_comment.customer) do %>
+            <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
+            <%= post_comment.customer.user_name %>
+          <% end %>
+        <% else %>
+          <%= link_to customer_path(post_comment.customer) do %>
+            <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
+            <%= post_comment.customer.user_name %>
+          <% end %>
         <% end %>
       </td>
       <td><%= post_comment.comment %></td>

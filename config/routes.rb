@@ -9,9 +9,6 @@ Rails.application.routes.draw do
     sessions: 'customer/sessions'
   }
 
-  devise_scope :customer do
-    post 'customers/guest_sign_in', to: 'customers/sessions#guest_sign_in'
-  end
 
   namespace :admin do
     resources :customers, only:[:show, :index, :edit, :update]
@@ -35,4 +32,9 @@ Rails.application.routes.draw do
   end
 
   get "search" => "searches#search"
+
+  devise_scope :customer do
+    post 'customer/guest_sign_in', to: 'customer/sessions#guest_sign_in'
+  end
+
 end

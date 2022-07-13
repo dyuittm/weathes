@@ -13,8 +13,8 @@ class Customer < ApplicationRecord
 
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
-  
-  
+
+
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
@@ -44,11 +44,16 @@ class Customer < ApplicationRecord
   def following?(customer)
     followings.include?(customer)
   end
-
+　#guestuser existing data or non-existent data
   def self.guest
-    find_or_create_by!(name: 'guestcustomer' ,email: 'guest@example.com') do |customer|
+    find_or_create_by!(prefecture_id: [1], email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      customer.name = "guestcustomer"
+      customer.first_name = "guest"
+      customer.last_name = "user"
+      customer.first_name_kana = "ゲスト"
+      customer.last_name_kana = "ユーザー"
+      customer.user_name = "guestuser"
+      customer.prefecture_id = 1
     end
   end
 

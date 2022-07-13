@@ -1,0 +1,32 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>投稿詳細</h2>
+  		<div>
+  		  <% @post.post_images.each do |image| %>
+  		    <%= image_tag image, size:"200x200" %>
+  		  <% end %>
+  		</div>
+  		<table>
+  		  <tr>
+          <td>
+            <%= link_to admin_customer_path(@customer) do %>
+              <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"100x100" %><br>
+              <%= @post.customer.user_name %>
+            <% end %>
+          </td>
+          <td><%= @post.title %></td>
+          <td><%= @post.body %></td>
+          <td>コメント数: <%= @post.post_comments.count %></td>
+          <td>
+            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= @post.favorites.count %>
+          </td>
+          <td><%= link_to 'Edit', edit_admin_post_path(@post), class: "btn btn-sm btn-success edit_admin_post_#{@post.id}" %></td>
+        </tr>
+      </table>
+      <div class="comments-area">
+        <%= render 'customer/post_comments/index', post: @post %>
+      </div>
+    </div>
+  </div>
+</div>

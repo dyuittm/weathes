@@ -15,17 +15,17 @@
           <% @posts.each do |post| %>
             <tr>
               <td>
-                <%= link_to (post.customer) do %>
+                <%= link_to admin_customer_path(post.customer) do %>
                   <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %><br>
-                  <%= post.customer.last_name %>
+                  <%= post.customer.user_name %>
                 <% end %>
               </td>
-              <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
+              <td><%= link_to post.title, admin_post_path(post), class: "admin_post_#{post.id}" %></td>
               <td><%= post.body %></td>
               <td><%= post.post_images.attached? ? post.post_images.count : 0 %></td>
               <td>コメント数: <%= post.post_comments.count %></td>
-              <td class="favorite_btn_<%= post.id %>">
-                <%= render "customer/favorites/favorite-btn", post: post %>
+              <td>
+                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= post.favorites.count %>
               </td>
             </tr>
           <% end %>

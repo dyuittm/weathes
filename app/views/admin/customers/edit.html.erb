@@ -3,7 +3,7 @@
     <h4 class="table-active col-auto mt-3">会員情報編集</h4>
     <%= render 'layouts/error', model: @customer %>
     <div class="col-sm-12 mt-5">
-      <%= form_with model: @customer, url: customer_path, method: :patch,  local:true do |f| %>
+      <%= form_with model: @customer, url: admin_customer_path, method: :patch,  local:true do |f| %>
         <%= image_tag @customer.get_profile_image, class: "rounded-circle", size: "100x100" %>
 
         <div class="form-group">

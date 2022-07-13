@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   validates :title, length: {in: 1..50}
   validates :body, length: {in: 1..200}
   validate :validate_number_of_files
+  # validate :post_images, presence: true
 
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?

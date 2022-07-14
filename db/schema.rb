@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2022_07_11_081740) do
     t.string "name"
     t.float "latitude"
     t.float "longitude"
+    t.string "name_prefecture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

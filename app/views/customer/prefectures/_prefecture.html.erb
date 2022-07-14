@@ -1,0 +1,52 @@
+<h3><%= @customer.prefecture.name %></h3>
+<div id="weather"></div>
+
+<script>
+  $(function () {
+    var API_KEY = "ENV['OPEN_WEATHER_MAP_API']";
+    var city = "#{@customer.prefecture.name}";
+    const weather_url = 'https://api.openweathermap.org/data/2.5/weather?lat=<%= @customer.prefecture.latitude %>&lon=<%= @customer.prefecture.longitude %>&appid=<%= ENV['OPEN_WEATHER_MAP_API']%>';
+
+    $.ajax({
+        url: weather_url,
+        dataType: 'json',
+        type: 'GET',
+      })
+      .done(function (weather) {
+        var insertHTML = '';
+
+        for (var i = 0; i <= 32; i = i + 8) {
+          insertHTML += buildHTML(data, i);
+        }
+        $('#weather').html(insertHTML);
+      })
+      .fail(function (weather) {
+        alert('天気予報取得に失敗しました');
+      });
+  });
+
+  //language(jp)
+  function buildHTML(weather, i) {
+    //日付、時間を取得（Dateがミリ秒なので1000倍が必要）
+    const date = new Date(weather.daily[i].dt * 1000);
+    //UTCとの時差を無くす(日本は-9時間のため9を足す)
+    date.setHours(date.getHours() + 9);
+    //月を取得。getMonth()は0~11を返すため1を足すことによって1月~12月を返すように設定
+    const month = date.getMonth() + 1;
+    //曜日の日本語化のため、配列を用意する
+    const Week = new Array('(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)');
+    //月＋日＋曜日をdayに代入。getDay()は0~6を返すためWeek配列内のインデックスに対応した文字列を取得
+    const day = month + '/' + date.getDate() + Week[date.getDay()];
+    //天気のアイコンを取得
+    const icon = weather.daily[i].weather[0].icon;
+
+    const html =
+      '<div class="weather__content--report">' +
+        // '<img src="https://openweathermap.org/img/w/' + icon + '.png">' +
+        '<span class="weather__content--report-date">' + day + "</span>" +
+        '<div class="weather__content--report-temp-max">' + '最高：' + Math.round(weather.daily[i].temp.max) + "℃</div>" +
+        '<span class="weather__content--report-temp-min">' + '最低：' + Math.floor(weather.daily[i].temp.min) + "℃</span>" +
+      '</div>';
+    return html
+  }
+</script>

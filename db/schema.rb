@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 2022_07_11_081740) do
 
   create_table "prefectures", force: :cascade do |t|
     t.string "name"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

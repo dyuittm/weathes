@@ -22,7 +22,7 @@
               </td>
               <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
               <td><%= post.body %></td>
-              <td><%= post.post_images.attached? ? post.post_images.count : 0 %></td>
+              <td><%= image_tag post.post_images[0], size:'50x50' %></td>
               <td>コメント数: <%= post.post_comments.count %></td>
               <td class="favorite_btn_<%= post.id %>">
                 <%= render "customer/favorites/favorite-btn", post: post %>

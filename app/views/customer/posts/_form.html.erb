@@ -1,22 +1,21 @@
-<h3>新規投稿</h3>
 <%= form_with model: post, url: posts_path, method: :post, local:true do |f| %>
 
-  <div class="form-group row">
-    <%= f.label :画像（3枚まで）, class: 'col-sm-3 control-label' %><br />
-    <%= f.file_field :post_images, multiple: true %>
+  <div class="field">
+    <%= f.file_field :post_images, multiple: true, class: 'mt-5' %><br>
+    <p class="text-right">※最大3枚まで</p>
   </div>
 
-  <div class="form-group row">
-    <%= f.label :タイトル, class: 'col-sm-3 control-label' %><br />
-    <%= f.text_field :title, :placeholder => "タイトル", class: 'rounded col-sm-5' %>
+  <div class="field">
+    <%= f.text_field :title, :placeholder => "タイトル", class: 'rounded col-sm-12 mt-1' %>
   </div>
 
-  <div class="form-group row">
-    <%= f.label :本文, class: 'col-sm-3 control-label' %><br />
-    <%= f.text_area :body, :placeholder => "本文", class: 'rounded col-sm-5' %>
+  <div class="field">
+    <%= f.text_area :body, :placeholder => "本文", class: 'rounded col-sm-12 mt-3' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "新規登録",class: "btn btn-success btn-lg col-sm-3 mx-auto d-block" %>
+    <%= f.button :type => "submit", style: 'border-style: none;', class: "btn btn-success col-sm-12 mt-3" do %>
+      <i class="fa-solid fa-plus"></i>post
+    <% end %>
   </div>
 <% end %>

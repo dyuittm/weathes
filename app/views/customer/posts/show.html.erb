@@ -1,39 +1,52 @@
 <div class='container'>
   <div class='row'>
-    <%= render 'layouts/error', model: @post %>
-    <%= render 'form', post: @post %>
-     <div class='col-md-8 offset-md-1'>
+    <div class='col-md-4 mt-5'>
+      <%= render 'layouts/error', model: @post_new %>
+      <%= render 'customer/customers/info', customer: @customer %>
+      <%= render 'form', post: @post_new %>
+    </div>
+     <div class='col-md-7 ml-5'>
   		<h2>投稿詳細</h2>
-  		<div>
+  		<div class="mt-5 mb-5">
   		  <% @post.post_images.each do |image| %>
-  		    <%= image_tag image, size:"200x200" %>
+  		    <%= image_tag image, size:"150x200", class: "mr-3" %>
   		  <% end %>
   		</div>
   		<table>
   		  <tr>
           <td>
             <%= link_to posts_path do %>
-              <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"100x100" %><br>
-              <%= @post.customer.last_name %>
+              <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"45x45" %><br>
+              <%= @post.customer.user_name %>
             <% end %>
           </td>
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
-          <td>コメント数: <%= @post.post_comments.count %></td>
+          <td>コメント: <%= @post.post_comments.count %></td>
           <td class="favorite_btn_<%= @post.id %>">
             <%= render "customer/favorites/favorite-btn", post: @post %>
           </td>
           <% if @post.customer == current_customer %>
-            <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-sm btn-success edit_post_#{@post.id}" %></td>
-            <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger post_#{@post.id}"%></td>
+            <td>
+              <%= link_to edit_post_path(@post), class: "btn btn-sm btn-success ml-2" do %>
+                <i class="fa-solid fa-pen-to-square"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-2" do %>
+                <i class="fa-solid fa-eraser"></i>
+              <% end %>
+            </td>
           <% end %>
         </tr>
       </table>
-      <div class="comments-area">
-        <%= render 'customer/post_comments/index', post: @post %>
-      </div>
-      <div class="new-comment">
-        <%= render 'customer/post_comments/form', post: @post, post_comment: @post_comment %>
+      <div class="comment d-md-flex mt-5">
+        <div class="comments-area col-md-6">
+          <%= render 'customer/post_comments/index', post: @post %>
+        </div>
+        <div class="new-comment col-md-6 mt-3">
+          <%= render 'customer/post_comments/form', post: @post, post_comment: @post_comment %>
+        </div>
       </div>
     </div>
   </div>

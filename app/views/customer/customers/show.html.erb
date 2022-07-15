@@ -1,13 +1,13 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-4'>
       <%= render 'customer/prefectures/prefecture', customer: @customer %>
       <%= render 'layouts/error', model: @post_new %>
       <%= render 'info', customer: @customer, followings: @followings, followers: @followers %>
       <%= render 'customer/posts/form', post: @post_new %>
     </div>
-    <div class='col-md-8'>
-      <%= render 'customer/posts/index',posts: @posts %>
+    <div class='col-md-7 ml-5'>
+      <%= render 'customer/posts/index', posts: @posts, customer: @customer %>
     </div>
   </div>
 </div>

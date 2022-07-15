@@ -30,7 +30,9 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "更新",class: "btn btn-success btn-lg col-sm-3 mx-auto d-block" %>
+      <%= f.button :type => "submit", style: 'border-style: none;', class: "btn btn-success col-sm-3 mx-auto d-block" do %>
+        <i class="fa-solid fa-pen-to-square"></i>update
+      <% end %>
     </div>
   <% end %>
 </div>

@@ -38,9 +38,13 @@
           <%= f.email_field :email, class: 'rounded col-sm-2' %>
         </div>
 
-        <div class="col-sm-9">
-          <%= f.submit "編集内容を保存", class: "btn btn-success col-sm-3 offset-sm-4 font-weight-bold" %>
-          <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger float-right font-weight-bold" %>
+        <div class="col-sm-9 d-flex">
+          <%= f.button :type => "submit", style: 'border-style: none;', class: "btn btn-success col-sm-3 mx-auto" do %>
+            <i class="fa-solid fa-pen-to-square"></i>update
+          <% end %>
+          <%= link_to unsubscribe_path, class: "btn btn-danger col-sm-2 float-right font-weight-bold" do %>
+            <i class="fa-solid fa-user-slash"></i>
+          <% end %>
         </div>
       <% end %>
     </div>

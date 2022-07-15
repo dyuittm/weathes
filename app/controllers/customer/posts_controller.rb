@@ -20,6 +20,7 @@ class Customer::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @customer = @post.customer
+    @post_new = Post.new
     @post_comment = PostComment.new
   end
 

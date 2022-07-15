@@ -47,7 +47,9 @@
         </div>
 
         <div class="col-sm-9">
-          <%= f.submit "変更", class: "btn btn-success col-sm-3 offset-sm-4 font-weight-bold" %>
+          <%= f.button :type => "submit", style: 'border-style: none;', class: "btn btn-success col-sm-3 mx-auto" do %>
+            <i class="fa-solid fa-pen-to-square"></i>update
+          <% end %>
         </div>
       <% end %>
     </div>

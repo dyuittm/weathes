@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/about' => 'customer/homes#about'
 
   scope module: :customer do
+    get 'customers/:id/favorites' => 'customers#favorites', as: 'favorites'
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
     resources :customers, only:[:show, :index, :edit, :update] do

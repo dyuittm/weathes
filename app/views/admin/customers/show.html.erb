@@ -1,29 +1,36 @@
-<h3>会員詳細</h3>
-
-<table class='table'>
-  <tr><%= image_tag @customer.get_profile_image, class: "rounded-circle", size: "100x100" %><%= @customer.user_name %></tr>
-  <tr>
-    <th>address</th>
-    <th><%= @customer.prefecture.name %></th>
-  </tr>
-  <tr>
-    <%# ← Aが存在したときのみBを表示する %>
-    <% if @customer.introduction.present? %>
-  	  <th>introduction</th>
-  	  <th><%= @customer.introduction %></th>
-  	<% end %>
-  </tr>
-    <tr>
-      <th>follows</th>
-      <th><%= @customer.followings.count %></th>
-    </tr>
-    <tr>
-      <th>followers</th>
-      <th><%= @customer.followers.count %></th>
-    </tr>
-</table>
-<div>
-  <%= link_to edit_admin_customer_path(@customer), class: "btn btn-outline-secondary btn-block edit_admin_customer_#{@customer.id}" do %>
-    <i class="fas fa-user-cog"></i>
-  <% end %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h3>会員詳細</h3>
+      <table class='table'>
+        <tr><%= image_tag @customer.get_profile_image, class: "rounded-circle", size: "100x100" %><%= @customer.user_name %></tr>
+        <tr>
+          <th>address</th>
+          <th><%= @customer.prefecture.name %></th>
+        </tr>
+        <tr>
+          <% if @customer.introduction.present? %>
+        	  <th>introduction</th>
+        	  <th><%= @customer.introduction %></th>
+        	<% end %>
+        </tr>
+        <tr>
+          <th>follows</th>
+          <th><%= @customer.followings.count %></th>
+        </tr>
+        <tr>
+          <th>followers</th>
+          <th><%= @customer.followers.count %></th>
+        </tr>
+      </table>
+      <div>
+        <%= link_to edit_admin_customer_path(@customer), class: "btn btn-outline-secondary btn-block edit_admin_customer_#{@customer.id}" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <%= render "admin/posts/index", posts: @posts, customer: @customer %>
+    </div>
+  </div>
 </div>

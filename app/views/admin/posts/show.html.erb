@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-8 offset-md-1'>
-  		<h2>投稿詳細</h2>
+  		<h3>投稿詳細</h3>
   		<div>
   		  <% @post.post_images.each do |image| %>
   		    <%= image_tag image, size:"200x200" %>
@@ -17,11 +17,15 @@
           </td>
           <td><%= @post.title %></td>
           <td><%= @post.body %></td>
-          <td>コメント数: <%= @post.post_comments.count %></td>
+          <td>コメント: <%= @post.post_comments.count %></td>
           <td>
             <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= @post.favorites.count %>
           </td>
-          <td><%= link_to 'Edit', edit_admin_post_path(@post), class: "btn btn-sm btn-success edit_admin_post_#{@post.id}" %></td>
+          <td>
+            <%= link_to edit_admin_post_path(@post), class: "btn btn-sm btn-success edit_admin_post_#{@post.id}" do %>
+              <i class="fa-solid fa-pen-to-square"></i>
+            <% end %>
+          </td>
         </tr>
       </table>
       <div class="comments-area">

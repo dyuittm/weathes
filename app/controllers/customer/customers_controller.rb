@@ -12,6 +12,12 @@ class Customer::CustomersController < ApplicationController
     @posts = @customer.posts
   end
 
+  def favorites
+    @customer = Customer.find(params[:id])
+    favorites= Favorite.where(customer_id: @customer.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
+
   def edit
   end
 

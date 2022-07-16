@@ -1,7 +1,7 @@
+<%= render 'customer/prefectures/prefecture', customer: @customer %>
 <div class='container'>
   <div class='row'>
     <div class='col-md-4'>
-      <%= render 'customer/prefectures/prefecture', customer: @customer %>
       <%= render 'layouts/error', model: @post_new %>
       <%= render 'info', customer: @customer, followings: @followings, followers: @followers %>
       <%= render 'customer/posts/form', post: @post_new %>

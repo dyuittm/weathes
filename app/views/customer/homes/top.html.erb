@@ -1,4 +1,7 @@
-<div>
-  <% @posts.each do |post| %>
-    
-</div>
+<% @posts.each do |post| %>
+  <div>
+    <%= image_tag post.post_images[0], size:'100x100' %>
+    <%= post.title %>
+  </div>
+<% end %>
+

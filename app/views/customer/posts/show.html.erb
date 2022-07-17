@@ -5,40 +5,52 @@
       <%= render 'customer/customers/info', customer: @customer %>
       <%= render 'form', post: @post_new %>
     </div>
-     <div class='col-md-7 ml-5'>
-  		<h2>投稿詳細</h2>
+     <div class='col-md-7 mt-5 ml-5'>
+  		<h3>-post detail-</h3>
   		<div class="mt-5 mb-5">
   		  <% @post.post_images.each do |image| %>
   		    <%= image_tag image, size:"150x200", class: "mr-3" %>
   		  <% end %>
   		</div>
-  		<table>
-  		  <tr>
-          <td>
-            <%= link_to posts_path do %>
-              <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"45x45" %><br>
-              <%= @post.customer.user_name %>
+  		<table class="table">
+        <thead>
+          <tr>
+            <th width="20%"></th>
+            <th width="20%">title</th>
+            <th width="20%">text</th>
+            <th width="15%">comment</th>
+            <th width="15%">favorite</th>
+            <th colspan="3" width="10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <%= link_to posts_path do %>
+                <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"45x45" %><br>
+                <%= @post.customer.user_name %>
+              <% end %>
+            </td>
+            <td><%= @post.title %></td>
+            <td><%= @post.body %></td>
+            <td><%= @post.post_comments.count %></td>
+            <td class="favorite_btn_<%= @post.id %>">
+              <%= render "customer/favorites/favorite-btn", post: @post %>
+            </td>
+            <% if @post.customer == current_customer %>
+              <td>
+                <%= link_to edit_post_path(@post), class: "btn btn-sm btn-success ml-1" do %>
+                  <i class="fa-solid fa-pen-to-square"></i>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-1" do %>
+                  <i class="fa-solid fa-eraser"></i>
+                <% end %>
+              </td>
             <% end %>
-          </td>
-          <td><%= @post.title %></td>
-          <td><%= @post.body %></td>
-          <td>コメント: <%= @post.post_comments.count %></td>
-          <td class="favorite_btn_<%= @post.id %>">
-            <%= render "customer/favorites/favorite-btn", post: @post %>
-          </td>
-          <% if @post.customer == current_customer %>
-            <td>
-              <%= link_to edit_post_path(@post), class: "btn btn-sm btn-success ml-2" do %>
-                <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger ml-2" do %>
-                <i class="fa-solid fa-eraser"></i>
-              <% end %>
-            </td>
-          <% end %>
-        </tr>
+          </tr>
+        </tbody>
       </table>
       <div class="comment d-md-flex mt-5">
         <div class="comments-area col-md-6">

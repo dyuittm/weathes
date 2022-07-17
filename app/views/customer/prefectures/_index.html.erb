@@ -1,0 +1,7 @@
+<% if customers.present? %>
+  <% customers.each do |customer| %>
+    <%= customers.user_name %>
+  <% end %>
+<% else %>
+  <p>なし</p>
+<% end %>

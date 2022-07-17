@@ -1,5 +1,5 @@
 <%= form_with(model:[post, post_comment], local: false) do |f| %>
-  <%= f.text_area :comment, rows:'2',placeholder: "コメント", class: "w-100" %><br>
+  <%= f.text_area :comment, rows:'2',placeholder: "comment", class: "w-100" %><br>
   <%= f.button :type => "submit", class: "btn btn-outline-dark mt-20 pull-right float-right" do %>
     <i class="fa-regular fa-paper-plane"></i>comment
   <% end %>

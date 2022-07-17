@@ -1,24 +1,32 @@
 <table class='table'>
-  <tr><%= image_tag customer.get_profile_image, class: "rounded-circle", size: "100x100" %><%= customer.user_name %></tr>
   <tr>
-    <th>address</th>
-    <th><%= customer.prefecture.name %></th>
+    <th></th>
+    <th><%= image_tag customer.get_profile_image, class: "rounded-circle", size: "50x50" %></th>
+    <th><%= customer.user_name %></th>
   </tr>
   <tr>
+    <th></th>
+    <th>address</th>
+    <th><%=link_to customer.prefecture.name, prefecture_path %></th>
+  </tr>
+  <tr>
+    <th></th>
     <%# ← Aが存在したときのみBを表示する %>
     <% if customer.introduction.present? %>
   	  <th>introduction</th>
   	  <th><%= customer.introduction %></th>
   	<% end %>
   </tr>
-    <tr>
-      <th>follows</th>
-      <th><%= link_to customer.followings.count, customer_follow_path(customer.id) %></th>
-    </tr>
-    <tr>
-      <th>followers</th>
-      <th><%= link_to customer.followers.count, customer_follow_path(customer.id) %></th>
-    </tr>
+  <tr>
+    <th></th>
+    <th>follows</th>
+    <th><%= link_to customer.followings.count, customer_follow_path(customer.id) %></th>
+  </tr>
+  <tr>
+    <th></th>
+    <th>followers</th>
+    <th><%= link_to customer.followers.count, customer_follow_path(customer.id) %></th>
+  </tr>
 </table>
 
 <div class='row'>
@@ -28,9 +36,9 @@
     <% end %>
   <% else %>
     <% if current_customer.following?(customer) %>
-      <%= link_to "フォロー外す", customer_relationships_path(customer.id), method: :delete, class: "btn btn-success w-100" %>
+      <%= link_to "unfollow", customer_relationships_path(customer.id), method: :delete, class: "btn btn-outline-secondary btn-block col-sm-10 mx-auto" %>
     <% else %>
-      <%= link_to "フォローする", customer_relationships_path(customer.id), method: :post, class: "btn btn-info w-100" %>
+      <%= link_to "follow", customer_relationships_path(customer.id), method: :post, class: "btn btn-outline-secondary btn-block col-sm-10 mx-auto" %>
     <% end %>
   <% end %>
 </div>

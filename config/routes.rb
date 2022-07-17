@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'customers/:id/favorites' => 'customers#favorites', as: 'favorites'
     get 'customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get 'customers/:id/prefecture' => 'customers#prefecture_index', as: 'prefecture'
     resources :customers, only:[:show, :index, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'follow' => 'relationships#follow', as:'follow'

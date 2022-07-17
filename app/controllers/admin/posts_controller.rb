@@ -1,11 +1,11 @@
 class Admin::PostsController < ApplicationController
+  before_action :set_post, only: [:show, :edit, :update]
 
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
     @customer = @post.customer
   end
 
@@ -30,6 +30,10 @@ class Admin::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :body, post_images: [])
+  end
+  
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end

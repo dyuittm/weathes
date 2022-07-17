@@ -1,34 +1,39 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-8 offset-md-1'>
-  		<h3>投稿詳細</h3>
-  		<div>
-  		  <% @post.post_images.each do |image| %>
-  		    <%= image_tag image, size:"200x200" %>
-  		  <% end %>
-  		</div>
-  		<table>
+		<div class='col-md-12 text-center mt-5'>
+    	<h3>-post detail-</h3>
+		</div>
+		<div class='col-md-7 mt-5 mb-5'>
+		  <% @post.post_images.each do |image| %>
+		    <%= image_tag image, size:"200x250" %>
+		  <% end %>
+		</div>
+		<div class="col-md-5 mt-5">
+  		<table class="table">
   		  <tr>
-          <td>
+  		    <td class="col-md-6 font-weight-bold">user</td>
+          <td class='col-md-6'>
             <%= link_to admin_customer_path(@customer) do %>
-              <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"100x100" %><br>
+              <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"100x100" %>
               <%= @post.customer.user_name %>
             <% end %>
           </td>
-          <td><%= @post.title %></td>
-          <td><%= @post.body %></td>
-          <td>コメント: <%= @post.post_comments.count %></td>
-          <td>
-            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= @post.favorites.count %>
-          </td>
-          <td>
-            <%= link_to edit_admin_post_path(@post), class: "btn btn-sm btn-success edit_admin_post_#{@post.id}" do %>
-              <i class="fa-solid fa-pen-to-square"></i>
-            <% end %>
-          </td>
+        </tr>
+  		  <tr>
+  		    <td class="col-md-6 font-weight-bold">title</td>
+          <td class='col-md-6'><%= @post.title %></td>
+        </tr>
+  		  <tr>
+  		    <td class="col-md-6 font-weight-bold">text</td>
+          <td class='col-md-6'><%= @post.body %></td>
         </tr>
       </table>
-      <div class="comments-area">
+      <div class="mt-4">
+        <%= link_to edit_admin_post_path(@post), class: "btn btn-sm btn-success col-md-4 d-block mx-auto" do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+      </div>
+      <div class="comments-area mt-5">
         <%= render 'customer/post_comments/index', post: @post %>
       </div>
     </div>

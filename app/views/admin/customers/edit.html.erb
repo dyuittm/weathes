@@ -1,56 +1,60 @@
 <div class="container">
   <div class="row">
-    <h4 class="table-active col-auto mt-3">会員情報編集</h4>
+
     <%= render 'layouts/error', model: @customer %>
-    <div class="col-sm-12 mt-5">
-      <%= form_with model: @customer, url: admin_customer_path, method: :patch,  local:true do |f| %>
-        <%= image_tag @customer.get_profile_image, class: "rounded-circle", size: "100x100" %>
 
-        <div class="form-group">
-          <%= f.label :アイコン %>
-          <%= f.file_field :profile_image, class: "form-control-file", accept: 'image/*' %>
+    <div class="col-md-12 justify-content-center mt-5">
+
+      <h3 class="text-center">-user edit-</h3>
+
+      <%= form_with model: @customer, url: admin_customer_path, method: :patch,  local:true, class: "ml-5" do |f| %>
+
+        <div class="form-group row">
+          <%= image_tag @customer.get_profile_image, class: "rounded-circle mr-5 ml-5", size: "130x130" %>
+          <%= f.file_field :profile_image, class: "form-control-file rounded col-md-4 mt-5 ml-5", accept: 'image/*' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :名前, class: 'col-sm-3 control-label' %>
-          <%= f.text_field :first_name, autofocus: true, class: 'rounded col-sm-2 mr-5' %>
-          <%= f.text_field :last_name, class: 'rounded col-sm-2' %>
+          <%= f.label :名前, class: 'col-md-3 control-label font-weight-bold' %>
+          <%= f.text_field :first_name, autofocus: true, class: 'rounded col-md-3 mr-5' %>
+          <%= f.text_field :last_name, class: 'rounded col-md-3' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :フリガナ, class: 'col-sm-3 control-label' %>
-          <%= f.text_field :first_name_kana, class: 'rounded col-sm-2 mr-5'%>
-          <%= f.text_field :last_name_kana, class: 'rounded col-sm-2' %>
+          <%= f.label :フリガナ, class: 'col-md-3 control-label font-weight-bold' %>
+          <%= f.text_field :first_name_kana, class: 'rounded col-md-3 mr-5'%>
+          <%= f.text_field :last_name_kana, class: 'rounded col-md-3' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :ユーザーネーム, class: 'col-sm-3 control-label' %>
-          <%= f.text_field :user_name, class: 'rounded col-sm-2 mr-5' %>
+          <%= f.label :ユーザーネーム, class: 'col-md-3 control-label font-weight-bold' %>
+          <%= f.text_field :user_name, class: 'rounded col-md-3 mr-5' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :お住まいの都道府県, class: 'col-sm-3 control-label' %>
-          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name) %>
+          <%= f.label :お住まいの都道府県, class: 'col-md-3 control-label font-weight-bold' %>
+          <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: 'rounded col-md-3'} %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :メールアドレス, class: 'col-sm-3 control-label' %>
-          <%= f.email_field :email, class: 'rounded col-sm-2' %>
+          <%= f.label :メールアドレス, class: 'col-md-3 control-label font-weight-bold' %>
+          <%= f.email_field :email, class: 'rounded col-md-3' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :会員ステータス, class: 'col-sm-2 control-label' %>
+          <%= f.label :会員ステータス, class: 'col-md-4 control-label font-weight-bold' %>
           <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_deleted, "有効", class: 'col-sm-1' %>
+          <%= f.label :is_deleted, "有効", class: 'col-md-1' %>
           <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted, "退会", class: 'col-sm-1' %>
+          <%= f.label :is_deleted, "退会", class: 'col-md-1' %>
         </div>
 
-        <div class="col-sm-9">
-          <%= f.button :type => "submit", style: 'border-style: none;', class: "btn btn-success col-sm-3 mx-auto" do %>
+        <div>
+          <%= f.button :type => "submit", style: 'border-style: none;', class: "btn btn-success col-md-3 d-block mx-auto" do %>
             <i class="fa-solid fa-pen-to-square"></i>update
           <% end %>
         </div>
+
       <% end %>
     </div>
   </div>

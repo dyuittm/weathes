@@ -14,7 +14,7 @@ class Admin::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "更新しました."
+      redirect_to admin_post_path(@post), notice: "更新しました."
     else
       render :edit
     end
@@ -25,6 +25,11 @@ class Admin::PostsController < ApplicationController
         image.purge
       end
     end
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:title, :body, post_images: [])
   end
 
 end

@@ -1,24 +1,32 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
-      <h3>会員詳細</h3>
-      <table class='table'>
-        <tr><%= image_tag @customer.get_profile_image, class: "rounded-circle", size: "100x100" %><%= @customer.user_name %></tr>
+    <div class='col-md-4 mt-5'>
+      <h3 class="text-center">-user detail-</h3>
+      <table class='table mt-5'>
         <tr>
+          <th></th>
+          <th><%= image_tag @customer.get_profile_image, class: "rounded-circle", size: "50x50" %></th>
+          <th><%= @customer.user_name %></th>
+        </tr>
+        <tr>
+          <th></th>
           <th>address</th>
           <th><%= @customer.prefecture.name %></th>
         </tr>
         <tr>
           <% if @customer.introduction.present? %>
+            <th></th>
         	  <th>introduction</th>
         	  <th><%= @customer.introduction %></th>
         	<% end %>
         </tr>
         <tr>
+          <th></th>
           <th>follows</th>
           <th><%= @customer.followings.count %></th>
         </tr>
         <tr>
+          <th></th>
           <th>followers</th>
           <th><%= @customer.followers.count %></th>
         </tr>
@@ -29,7 +37,7 @@
         <% end %>
       </div>
     </div>
-    <div class='col-md-9'>
+    <div class='col-md-8 text-center mt-5'>
       <%= render "admin/posts/index", posts: @posts, customer: @customer %>
     </div>
   </div>

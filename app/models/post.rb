@@ -23,7 +23,7 @@ class Post < ApplicationRecord
 
   def self.search_for(content, method)
     if method == 'partial'
-      Post.where('title LIKE ?', '%'+content+'%')
+      Post.where('title LIKE ? OR body LIKE　?', '%'+content+'%', '%'+content+'%')
     else
       Post.all
     end

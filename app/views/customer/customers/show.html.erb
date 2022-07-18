@@ -3,10 +3,11 @@
   <div class='row'>
     <div class='col-md-4 mt-5'>
       <%= render 'layouts/error', model: @post_new %>
-      <%= render 'info', customer: @customer, prefecture: @prefecture %>
+      <%= render 'info', customer: @customer, followings: @followings, followers: @followers %>
       <%= render 'customer/posts/form', post: @post_new %>
     </div>
     <div class='col-md-8 mt-5'>
+      <h3 class="text-center">-post index-</h3>
       <%= render 'customer/posts/index', posts: @posts, customer: @customer %>
     </div>
   </div>

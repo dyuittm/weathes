@@ -38,6 +38,10 @@ class Customer < ApplicationRecord
     followings.include?(customer)
   end
 
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
+
   def self.guest
     find_or_create_by!(prefecture_id: [1], email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64

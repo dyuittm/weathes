@@ -76,9 +76,11 @@
               <% end %>
             </ul>
           </div>
-          <div class="">
-            <%= render 'searches/form' %>
-          </div>
+          <% if signed_in? %>
+            <div class="">
+              <%= render 'searches/form' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

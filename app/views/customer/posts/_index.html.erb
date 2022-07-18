@@ -1,10 +1,11 @@
-<h3 class="text-center">-post index-</h3>
-<div class="text-right">
-  <%= link_to favorites_path(customer), class: "btn btn-outline-secondary text-dark" do %>
-    <i class="fa-solid fa-heart-circle-check"></i>favorite
-  <% end %>
-</div>
-<table class="table mt-3">
+<% if customer == current_customer %>
+  <div class="text-right">
+    <%= link_to favorites_path(customer), class: "btn btn-outline-secondary text-dark" do %>
+      <i class="fa-solid fa-heart-circle-check"></i>favorite
+    <% end %>
+  </div>
+<% end %>
+<table class="table mt-5">
   <thead class="table-dark text-light">
     <tr>
       <th width="15%"></th>

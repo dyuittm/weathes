@@ -10,7 +10,6 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @post_new = Post.new
     @posts = @customer.posts
-    @prefecture = @customer.prefecture
   end
 
   def favorites
@@ -40,11 +39,6 @@ class Customer::CustomersController < ApplicationController
     @customer.update(is_deleted: true)
     reset_session
     redirect_to root_path, notice: "退会処理を実行いたしました"
-  end
-
-  def prefecture_index
-    @customer = Customer.where(id: params[:id])
-    @customers = @customer.prefecture
   end
 
   private

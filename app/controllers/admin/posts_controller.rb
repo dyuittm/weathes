@@ -14,8 +14,10 @@ class Admin::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to admin_post_path(@post), notice: "更新しました."
+      flash[:notice] = 'You have updated post successfully.'
+      redirect_to admin_post_path(@post)
     else
+      flash[:alert] = 'Posting updated failed!!'
       render :edit
     end
 
@@ -31,7 +33,7 @@ class Admin::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, post_images: [])
   end
-  
+
   def set_post
     @post = Post.find(params[:id])
   end

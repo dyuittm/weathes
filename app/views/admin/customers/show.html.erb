@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-4 mt-5'>
+    <div class='col-md-4 mt-3'>
       <h3 class="text-center">-user detail-</h3>
       <table class='table mt-5'>
         <tr>
@@ -32,12 +32,12 @@
         </tr>
       </table>
       <div>
-        <%= link_to edit_admin_customer_path(@customer), class: "btn btn-outline-secondary btn-block edit_admin_customer_#{@customer.id}" do %>
+        <%= link_to edit_admin_customer_path(@customer), class: "btn btn-outline-secondary btn-block col-sm-10 mx-auto" do %>
           <i class="fas fa-user-cog"></i>
         <% end %>
       </div>
     </div>
-    <div class='col-md-8 text-center mt-5'>
+    <div class='col-md-8 text-center mt-3'>
       <%= render "admin/posts/index", posts: @posts, customer: @customer %>
     </div>
   </div>

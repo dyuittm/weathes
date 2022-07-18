@@ -5,7 +5,7 @@
     <% end %>
   </div>
 <% end %>
-<table class="table mt-5">
+<table class="table mt-3">
   <thead class="table-dark text-light">
     <tr>
       <th width="15%"></th>
@@ -21,7 +21,7 @@
       <tr>
         <td>
           <%= link_to (post.customer) do %>
-            <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %>
+            <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %><br>
             <%= post.customer.user_name %>
           <% end %>
         </td>

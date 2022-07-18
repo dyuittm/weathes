@@ -6,8 +6,10 @@ class Customer::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.customer_id = current_customer.id
     if @post.save
-      redirect_to post_path(@post), notice: "登録しました."
+      flash[:notice] = 'You have created post successfully.'
+      redirect_to post_path(@post)
     else
+      flash[:alert] = 'Posting failed!!'
       @posts = Post.all
       render :index
     end
@@ -29,8 +31,10 @@ class Customer::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "更新しました."
+      flash[:notice] = 'You have updated post successfully.'
+      redirect_to post_path(@post)
     else
+      flash[:alert] = 'Posting updated failed!!'
       render :edit
     end
 

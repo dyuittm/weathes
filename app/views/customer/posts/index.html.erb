@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 mt-5">
+    <div class="col-sm-12 mt-3">
       <h3 class="text-center">-post index-</h3>
       <table class="table mt-5">
         <thead class="table-dark text-light">
@@ -25,7 +25,7 @@
               <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
               <td><%= post.body %></td>
               <td><%= image_tag post.post_images[0], size:'50x50' %></td>
-              <td>コメント数: <%= post.post_comments.count %></td>
+              <td><%= post.post_comments.count %></td>
               <td class="favorite_btn_<%= post.id %>">
                 <%= render "customer/favorites/favorite-btn", post: post %>
               </td>

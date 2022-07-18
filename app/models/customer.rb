@@ -54,8 +54,8 @@ class Customer < ApplicationRecord
     end
   end
 
-  def self.search_for(content, method)
-    if method == 'partial'
+  def self.search_for(content)
+    if content != ""
       Customer.where('user_name LIKE ?', '%'+content+'%')
     else
       Customer.all

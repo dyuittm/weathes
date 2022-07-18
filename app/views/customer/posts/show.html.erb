@@ -1,11 +1,11 @@
+<%= render 'layouts/error', model: @post_new %>
 <div class='container'>
   <div class='row'>
-    <div class='col-md-4 mt-5'>
-      <%= render 'layouts/error', model: @post_new %>
+    <div class='col-md-4 mt-3'>
       <%= render 'customer/customers/info', customer: @customer %>
       <%= render 'form', post: @post_new %>
     </div>
-     <div class='col-md-7 mt-5 ml-5'>
+     <div class='col-md-7 mt-3 ml-5'>
   		<h3>-post detail-</h3>
   		<div class="mt-5 mb-5">
   		  <% @post.post_images.each do |image| %>

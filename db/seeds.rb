@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-   email: 'weathes@weathes.com',
-   password: 'weathes'
+   email: ENV['ADMINMAIL'],
+   password: ENV['ADMINPASS']
 )
-
 
 Prefecture.create(name: '北海道',name_prefecture: "Hokkaido")
 Prefecture.create(name: '青森',name_prefecture: "Aomori-ken")

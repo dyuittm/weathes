@@ -1,6 +1,9 @@
 <% @posts.each do |post| %>
   <div>
-    <%= image_tag post.post_images[0], size:'100x100' %>
+    <%= link_to post_path(post) do %>
+      <%= image_tag post.post_images[0], size:'200x250' %>
+    <% end %><br>
+    <%= post.customer.user_name %><br>
     <%= post.title %>
   </div>
 <% end %>

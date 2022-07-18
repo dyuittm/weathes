@@ -23,8 +23,8 @@
             <%= post.customer.user_name %>
           <% end %>
         </td>
-        <td><%= link_to post.title, admin_post_path(post), class: "post_#{post.id}" %></td>
-        <td><%= post.body %></td>
+        <td><%= link_to truncate(post.title, length: 15), admin_post_path(post), class: "post_#{post.id}" %></td>
+        <td><%= truncate(post.body, length: 10) %></td>
         <td><%= image_tag post.post_images[0], size:'50x50' %></td>
         <td>コメント数: <%= post.post_comments.count %></td>
         <% if admin_signed_in? %>

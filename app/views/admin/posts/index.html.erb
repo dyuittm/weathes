@@ -5,13 +5,11 @@
       <table class="table mt-5">
         <thead class="table-dark text-light">
           <tr>
-            <th width="10%"></th>
-            <th width="15%">title</th>
-            <th width="20%">text</th>
-            <th width="25%">image</th>
-            <th width="10%">comment</th>
-            <th width="10%">favorite</th>
-            <th colspan="3" width="10%"></th>
+            <th width="15%"></th>
+            <th width="25%">title</th>
+            <th width="25%">text</th>
+            <th width="15%">image</th>
+            <th colspan="3" width="20%"></th>
           </tr>
         </thead>
         <tbody>
@@ -23,10 +21,14 @@
                   <%= post.customer.user_name %>
                 <% end %>
               </td>
-              <td><%= link_to post.title, admin_post_path(post), class: "admin_post_#{post.id}" %></td>
-              <td><%= post.body %></td>
+              <td><%= link_to truncate(post.title, length: 20), admin_post_path(post), class: "admin_post_#{post.id}" %></td>
+              <td><%= truncate(post.body, length: 15) %></td>
               <td><%= image_tag post.post_images[0], size:'70x70' %></td>
-              <td><%= post.post_comments.count %></td>
+              <td>
+                <%= post.post_comments.count do %>
+                  <i class="fa-regular fa-comment-dots"></i>
+                <% end %>
+              </td>
               <td>
                 <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= post.favorites.count %>
               </td>

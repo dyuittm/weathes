@@ -7,7 +7,7 @@
 
         <div class="form-group">
           <% if @post.post_images.attached? %>
-            <div style="width: 750px;" class="d-flex justify-content-center offset-md-2">
+            <div style="width: 750px;" class="d-flex justify-content-center offset-md-1">
             <% @post.post_images.each do |image| %>
               <div style="display: flex; margin:5px 5px 5px 0;">
                 <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
@@ -22,17 +22,17 @@
             選択済みの画像<br>
             （削除する画像にチェックをつけてください）
           </p>
-          <%= f.file_field :post_images, multiple: true, class: 'form-control-file offset-md-2' %>
+          <%= f.file_field :post_images, multiple: true, class: 'form-control-file offset-md-1' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :タイトル, class: 'col-md-3 control-label font-weight-bold offset-md-2' %><br />
-          <%= f.text_field :title, class: 'rounded col-md-3' %>
+          <%= f.label :タイトル, class: 'col-md-3 control-label font-weight-bold offset-md-1' %><br />
+          <%= f.text_field :title, class: 'rounded col-md-5' %>
         </div>
 
         <div class="form-group row">
-          <%= f.label :本文, class: 'col-md-3 control-label font-weight-bold offset-md-2' %><br />
-          <%= f.text_area :body, class: 'rounded col-md-3' %>
+          <%= f.label :本文, class: 'col-md-3 control-label font-weight-bold offset-md-1' %><br />
+          <%= f.text_area :body, rows:'4', class: 'rounded col-md-5' %>
         </div>
 
         <div class="actions">

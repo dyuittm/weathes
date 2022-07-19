@@ -18,14 +18,8 @@
         <td><%= customer.posts.count %></td>
         <td><%= customer.followers.count %></td>
         <td>
-          <% if admin_signed_in? %>
-            <%= link_to admin_customer_path(customer), class: "btn btn-primary btn-sm" do %>
-              <i class="fa-solid fa-user"></i>show
-            <% end %>
-          <% else%>
-            <%= link_to customer_path(customer), class: "btn btn-primary btn-sm" do %>
-              <i class="fa-solid fa-user"></i>show
-            <% end %>
+          <%= link_to customer_path(customer), class: "btn btn-primary btn-sm" do %>
+            <i class="fa-solid fa-user"></i>show
           <% end %>
         </td>
       </tr>

@@ -11,7 +11,7 @@
 
       <div class="d-flex flex-row">
         <p class="font-weight-bold"><%= @post.title %></p><br>
-        <%= link_to posts_path, class: "ml-3" do %>
+        <%= link_to customer_path(@post.customer), class: "ml-3" do %>
           <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"45x45" %><br>
           <%= @post.customer.user_name %>
         <% end %>

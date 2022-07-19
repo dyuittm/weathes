@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 text-center mt-3">
-      <h3>-index-</h3>
+      <h3>-post index-</h3>
       <table class="table mt-5">
         <thead class="table-dark text-light">
           <tr>
@@ -25,9 +25,7 @@
               <td><%= truncate(post.body, length: 15) %></td>
               <td><%= image_tag post.post_images[0], size:'70x70' %></td>
               <td>
-                <%= post.post_comments.count do %>
-                  <i class="fa-regular fa-comment-dots"></i>
-                <% end %>
+                <i class="fa-regular fa-comment-dots"></i><%= post.post_comments.count %>
               </td>
               <td>
                 <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= post.favorites.count %>

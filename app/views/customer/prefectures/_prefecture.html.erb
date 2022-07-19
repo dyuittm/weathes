@@ -1,5 +1,4 @@
-<h3><%= @customer.prefecture.name %></h3>
-<div id="weather"></div>
+<%= @customer.prefecture.name %><div id="weather" class="d-flex justify-content-end"></div>
 
 <script>
   $(function () {
@@ -21,8 +20,6 @@
         insertHTML += buildHTML(data, i);
       }
 
-      insertHTML += weather
-       console.log(insertHTML)
       $('#weather').html(insertHTML);
     })
     .fail(function (data) {
@@ -39,14 +36,12 @@
     var day = month + '/' + date.getDate() + Week[date.getDay()];
     var icon = data.list[i].weather[0].icon;
     var html =
-      '<div class="weather-box">' +
-        '<div class="weather-report">' +
-          '<img src="https://openweathermap.org/img/w/' + icon + '.png" width="70" height="70">' +
-          '<span class="weather-date">' + day + "</span>" +
-          '<div class="weather-temp-max">' + '最高：' + Math.round(data.list[i].main.temp_max) + "℃</div>" +
-          '<span class="weather-temp-min">' + '最低：' + Math.floor(data.list[i].main.temp_min) + "℃</span>" +
-        '</div>'
+      '<div class="weather-report">' +
+        '<img src="https://openweathermap.org/img/w/' + icon + '.png" width="70" height="70">' +
+        '<span class="weather-date">' + day + '</span>' +
+        '<div class="weather-temp-max">' + '最高：' + Math.round(data.list[i].main.temp_max) + '℃</div>' +
+        '<span class="weather-temp-min">' + '最低：' + Math.floor(data.list[i].main.temp_min) + '℃</span>' +
       '</div>';
-    return html
+    return html;
   }
 </script>

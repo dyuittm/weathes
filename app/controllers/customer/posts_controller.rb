@@ -3,15 +3,16 @@ class Customer::PostsController < ApplicationController
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def create
-    @post = Post.new(post_params)
-    @post.customer_id = current_customer.id
-    if @post.save
+    @post_new = Post.new(post_params)
+    @post_new.customer_id = current_customer.id
+    if @post_new.save
       flash[:notice] = 'You have created post successfully.'
-      redirect_to post_path(@post)
+      redirect_to post_path(@post_new)
     else
       flash[:alert] = 'Posting failed!!'
       @posts = Post.all
-      render :index
+      @customer = current_customer
+      render "customer/customers/show"
     end
   end
 

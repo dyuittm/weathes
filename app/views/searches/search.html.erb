@@ -7,9 +7,9 @@
       <% elsif @model == 'post' %>
       	<h3 class="text-center mt-5">posts search for "<%= @content %>"</h3>
         <%= render 'customer/posts/index', posts: @records, customer: @customer %>
-      <% else %>
+      <% elsif @model == 'prefecture' %>
       	<h3 class="text-center mt-5">prefectures search for "<%= @content %>"</h3>
-      	
+        <%= render 'customer/customers/index', customers: @records %>
       <% end %>
     </div>
   </div>

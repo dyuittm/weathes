@@ -19,6 +19,9 @@ module Weathes
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Asia/Tokyo'
+
     #投稿画像の編集の際に削除・追加ができる
     config.active_storage.replace_on_assign_to_many = false
   end

@@ -5,9 +5,9 @@
       <table class="table mt-5">
         <thead class="table-dark text-light">
           <tr>
-            <th width="15%"></th>
-            <th width="25%">title</th>
-            <th width="25%">text</th>
+            <th width="15%">user</th>
+            <th width="20%"></th>
+            <th width="30%">post</th>
             <th width="15%">image</th>
             <th colspan="3" width="20%"></th>
           </tr>
@@ -21,9 +21,16 @@
                   <%= post.customer.user_name %>
                 <% end %>
               </td>
-              <td><%= link_to truncate(post.title, length: 20), admin_post_path(post), class: "admin_post_#{post.id}" %></td>
-              <td><%= truncate(post.body, length: 15) %></td>
-              <td><%= image_tag post.post_images[0], size:'70x70' %></td>
+              <td>
+                <%= post.customer.prefecture.name %><br>
+                <%= l post.created_at, format: :short %>
+              </td>
+              <td>
+                <%= link_to truncate(post.title, length: 20), admin_post_path(post) %><br>
+                <%= truncate(post.body, length: 15) %><br>
+              <td>
+                <%= image_tag post.post_images[0], size:'70x70' %>
+              </td>
               <td>
                 <i class="fa-regular fa-comment-dots"></i><%= post.post_comments.count %>
               </td>

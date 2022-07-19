@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  FILE_NUMBER_LIMIT = 3
+  FILE_NUMBER_LIMIT = 4
 
   belongs_to :customer
   has_many :post_comments, dependent: :destroy

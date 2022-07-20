@@ -6,10 +6,10 @@ class Customer::PostsController < ApplicationController
     @post_new = Post.new(post_params)
     @post_new.customer_id = current_customer.id
     if @post_new.save
-      flash[:notice] = 'You have created post successfully.'
+      flash[:notice] = '投稿しました'
       redirect_to post_path(@post_new)
     else
-      flash[:alert] = 'Posting failed!!'
+      flash[:alert] = '投稿できませんでした'
       @posts = Post.all
       @customer = current_customer
       render "customer/customers/show"
@@ -32,10 +32,10 @@ class Customer::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash[:notice] = 'You have updated post successfully.'
+      flash[:notice] = '投稿を変更しました'
       redirect_to post_path(@post)
     else
-      flash[:alert] = 'Posting updated failed!!'
+      flash[:alert] = '変更できませんでした'
       render :edit
     end
 

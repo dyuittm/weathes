@@ -40,6 +40,32 @@ footer{
   height: 150px;
 }
 
+.about-container {
+  width: 100%;
+  height: 600px;
+  background-image: url(bg_image.jpg);
+  background-size: cover;
+  background-position: top;
+}
+
+.introduction {
+  font-size: 20px;
+  color: #fff;
+  text-align: left;
+  padding-top: 100px;
+  margin-left:  70px;
+  line-height: 40px;
+}
+
+.introduction-2 {
+  font-size: 20px;
+  color: #fff;
+  text-align: lefr;
+  padding-top: 170px;
+  margin-left: 980px;
+  line-height: 40px;
+}
+
 .search-container{
   margin-top: 10px;
   float: right;

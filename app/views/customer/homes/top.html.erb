@@ -1,19 +1,16 @@
+<h3 class="text-center mt-3">-new post-</h3>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h3 class="text-center mt-3">-new post-</h3>
-      <div class="d-flex align-content-start flex-wrap">
+      <div class="card-list-container py-5">
         <% @posts.each do |post| %>
-          <div>
+          <div class="card w-50 mx-auto mt-4 shadow-lg">
             <%= link_to post_path(post) do %>
-              <%= image_tag post.post_images[0], size:'200x250' %>
+              <%= image_tag post.post_images[0], size:'300x350' %><br>
             <% end %>
+            <p><%= post.customer.user_name %><%= l post.created_at %></p><br>
+            <p><%= truncate(post.title, length: 10) %></p><br>
           </div>
-          <div>
-            <p><%= post.customer.user_name %></p><br>
-            <p><%= truncate(post.title, length: 10) %></p>
-          </div>
-          <div><%= l post.created_at %></div>
         <% end %>
       </div>
     </div>

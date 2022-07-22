@@ -6,7 +6,46 @@
         <%= render 'customer/customers/index', customers: @records %>
       <% elsif @model == 'post' %>
       	<h3 class="text-center mt-5">posts search for "<%= @content %>"</h3>
-        <%= render 'customer/posts/index', posts: @records, customer: @customer %>
+        <table class="table mt-3">
+          <thead class="table-dark text-light">
+            <tr>
+              <th width="15%">user</th>
+              <th width="20%"></th>
+              <th width="30%">post</th>
+              <th width="15%">image</th>
+              <th colspan="3"width="20%"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @records.each do |post| %>
+              <tr>
+                <td>
+                  <%= link_to (post.customer) do %>
+                    <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %><br>
+                    <%= post.customer.user_name %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= post.customer.prefecture.name %><br>
+                  <%= l post.created_at, format: :short %>
+                </td>
+                <td>
+                  <%= link_to truncate(post.title, length: 15), post, class: "post_#{post.id}" %><br>
+                  <%= truncate(post.body, length: 10) %><br>
+                <td>
+                  <%= image_tag post.post_images[0], size:'70x70' %>
+                </td>
+                <td>
+                  <i class="fa-regular fa-comment-dots"></i><%= post.post_comments.count %>
+                </td>
+                <td>
+                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= post.favorites.count %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @records %>
       <% elsif @model == 'prefecture' %>
       	<h3 class="text-center mt-5">prefectures search for "<%= @content %>"</h3>
         <%= render 'customer/customers/index', customers: @records %>

@@ -3,19 +3,19 @@ class Customer::CustomersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page])
   end
 
   def show
     @customer = Customer.find(params[:id])
     @post_new = Post.new
-    @posts = @customer.posts
+    @posts = @customer.posts.page(params[:page])
   end
 
   def favorites
     @customer = Customer.find(params[:id])
     favorites= Favorite.where(customer_id: @customer.id).pluck(:post_id)
-    @favorite_posts = Post.find(favorites)
+    @favorite_posts = Post.find(favorites).page(params[:page])
   end
 
   def edit

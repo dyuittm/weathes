@@ -57,9 +57,16 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'kaminari','~> 1.2.1'
-gem 'pry-rails'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
+end
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  
+  gem 'pry-rails'
 end

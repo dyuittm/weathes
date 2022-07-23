@@ -13,60 +13,60 @@
             <p id="customer_name">ようこそ、<%= current_customer.user_name %>さん！</p>
             <li class="nav-item mr-3">
               <%= link_to customer_path(current_customer), class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-regular fa-face-grin-wide"></i>Mypage
+                <i class="far fa-smile"></i>mypage
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to posts_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-regular fa-images"></i>Posts
+                <i class="fas fa-images"></i>posts
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to customers_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-users"></i>Users
+                <i class="fas fa-users"></i>users
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to destroy_customer_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-right-from-bracket"></i>Logout
+                <i class="fas fa-sign-out-alt"></i>logout
               <% end %>
             </li>
           <% elsif admin_signed_in? %>
             <p id="admin_name">こちらは管理者専用ページです</p>
             <li class="nav-item mr-3">
               <%= link_to admin_customers_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-users"></i>Users
+                <i class="fas fa-users"></i>users
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to admin_posts_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-regular fa-images"></i>Posts
+                <i class="fas fa-images"></i>posts
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to destroy_admin_session_path, method: :delete, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-right-from-bracket"></i>Logout
+                <i class="fas fa-sign-out-alt"></i>logout
               <% end %>
             </li>
           <% else %>
             <li class="nav-item mr-3">
               <%= link_to about_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-book"></i>About
+                <i class="fas fa-book"></i>about
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to new_customer_registration_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-user-plus"></i>signup
+                <i class="fas fa-user-plus"></i>signup
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to new_customer_session_path, class: 'btn btn-sm btn-outline-secondary nav-link text-dark' do %>
-                <i class="fa-solid fa-right-to-bracket"></i>Login
+                <i class="fas fa-sign-in-alt"></i>login
               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to customer_guest_sign_in_path, class: "btn btn-sm btn-outline-secondary nav-link text-dark", method: :post do %>
-                <i class="fa-regular fa-circle-user"></i>Guest
+                <i class="far fa-user-circle"></i>guest
               <% end %>
             </li>
           <% end %>

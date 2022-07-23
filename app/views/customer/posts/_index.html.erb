@@ -1,6 +1,6 @@
 <div class="text-right">
   <%= link_to favorites_path(customer), class: "btn btn-outline-secondary text-dark" do %>
-    <i class="fa-solid fa-heart-circle-check"></i>favorite
+    <i class="far fa-heart"></i>favorite
   <% end %>
 </div>
 <table class="table mt-3">
@@ -33,7 +33,7 @@
           <%= image_tag post.post_images[0], size:'70x70' %>
         </td>
         <td>
-          <i class="fa-regular fa-comment-dots"></i><%= post.post_comments.count %>
+          <i class="far fa-comment-dots"></i><%= post.post_comments.count %>
         </td>
         <td class="favorite_btn_<%= post.id %>">
           <%= render "customer/favorites/favorite-btn", post: post %>

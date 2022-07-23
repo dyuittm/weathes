@@ -2,6 +2,7 @@
 <div class='container-fluid'>
   <div class='row'>
     <div class='col-md-4 mt-3'>
+      <%= render 'customer/prefectures/prefecture', customer: @customer %>
       <%= render 'customer/customers/info', customer: @customer %>
       <%= render 'form', post: @post_new %>
     </div>
@@ -34,10 +35,10 @@
         </div>
         <% if @post.customer == current_customer %>
           <%= link_to edit_post_path(@post), class: "btn btn-sm btn-outline-dark ml-2" do %>
-            <i class="fa-solid fa-pen-to-square"></i>
+            <i class="fas fa-edit"></i>
           <% end %>
           <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-dark ml-2" do %>
-            <i class="fa-solid fa-eraser"></i>
+            <i class="fas fa-eraser"></i>
           <% end %>
         <% end %>
       </div>

@@ -31,6 +31,14 @@ class Customer::PostsController < ApplicationController
   end
 
   def update
+    if params[:post][:image_ids]
+      params[:post][:image_ids].each do |image_id|
+        image = @post.post_images.find(image_id)
+        #byebug
+        image.purge
+      end
+    end
+
     if @post.update(post_params)
       flash[:notice] = '投稿を変更しました'
       redirect_to post_path(@post)
@@ -39,12 +47,6 @@ class Customer::PostsController < ApplicationController
       render :edit
     end
 
-    if params[:post][:image_ids]
-      params[:post][:image_ids].each do |image_id|
-        image = @post.post_images.find(image_id)
-        image.purge
-      end
-    end
   end
 
   def destroy

@@ -18,12 +18,12 @@
             <% @favorite_posts.each do |post| %>
               <tr>
                 <td>
-                  <%= link_to (post.customer) do %>
+                  <%= link_to (post.customer), class: "link" do %>
                     <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %><br>
                     <%= post.customer.user_name %>
                   <% end %>
                 </td>
-                <td><%= link_to post.title,post, class: "post_#{post.id}" %></td>
+                <td><%= link_to post.title,post, class: "link post_#{post.id}" %></td>
                 <td><%= post.body %></td>
                 <td><%= image_tag post.post_images[0], size:'50x50' %></td>
                 <td><%= post.post_comments.count %></td>

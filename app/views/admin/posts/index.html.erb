@@ -16,7 +16,7 @@
           <% @posts.each do |post| %>
             <tr>
               <td>
-                <%= link_to admin_customer_path(post.customer) do %>
+                <%= link_to admin_customer_path(post.customer), class: "link" do %>
                   <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %><br>
                   <%= post.customer.user_name %>
                 <% end %>
@@ -26,7 +26,7 @@
                 <%= l post.created_at, format: :short %>
               </td>
               <td>
-                <%= link_to truncate(post.title, length: 20), admin_post_path(post) %><br>
+                title: <%= link_to truncate(post.title, length: 20), admin_post_path(post), class: "link" %><br>
                 <%= truncate(post.body, length: 15) %><br>
               <td>
                 <%= image_tag post.post_images[0], size:'70x70' %>
@@ -39,7 +39,7 @@
               </td>
               <td>
                 <%= link_to admin_post_path(post), class: "btn btn-primary btn-sm" do %>
-                  <i class="fa-solid fa-shirt"></i>show
+                  <i class="fas fa-image"></i>show
                 <% end %>
               </td>
             </tr>

@@ -51,6 +51,7 @@ class Customer::PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:notice] = '投稿を削除しました'
     redirect_to customer_path(current_customer)
   end
 

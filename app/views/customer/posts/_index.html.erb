@@ -17,7 +17,7 @@
     <% posts.each do |post| %>
       <tr>
         <td>
-          <%= link_to (post.customer) do %>
+          <%= link_to (post.customer), class: "link" do %>
             <%= image_tag post.customer.get_profile_image, class: "rounded-circle", size:'50x50' %><br>
             <%= post.customer.user_name %>
           <% end %>
@@ -27,7 +27,7 @@
           <%= l post.created_at, format: :short %>
         </td>
         <td>
-          <%= link_to truncate(post.title, length: 15), post, class: "post_#{post.id}" %><br>
+          <%= link_to truncate(post.title, length: 15), post, class: "link post_#{post.id}" %><br>
           <%= truncate(post.body, length: 10) %><br>
         <td>
           <%= image_tag post.post_images[0], size:'70x70' %>

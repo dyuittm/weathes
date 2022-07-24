@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only:[:show, :index, :edit, :update]
-    resources :posts, only:[:show, :index, :edit, :update]
+    resources :posts, only:[:show, :index, :edit, :update, :destroy]
   end
 
   root to: "customer/homes#top"

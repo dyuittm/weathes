@@ -10,9 +10,9 @@
     <th><%= customer.prefecture.name %></th>
   </tr>
   <tr>
-    <th></th>
     <%# ← Aが存在したときのみBを表示する %>
     <% if customer.introduction.present? %>
+      <th></th>
   	  <th>introduction</th>
   	  <th><%= customer.introduction %></th>
   	<% end %>
@@ -20,12 +20,12 @@
   <tr>
     <th></th>
     <th>follows</th>
-    <th><%= link_to customer.followings.count, customer_follow_path(customer.id) %></th>
+    <th><%= link_to customer.followings.count, customer_follow_path(customer.id), class: "link" %></th>
   </tr>
   <tr>
     <th></th>
     <th>followers</th>
-    <th><%= link_to customer.followers.count, customer_follow_path(customer.id) %></th>
+    <th><%= link_to customer.followers.count, customer_follow_path(customer.id), class: "link" %></th>
   </tr>
 </table>
 

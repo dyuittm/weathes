@@ -6,7 +6,7 @@
       <div class="float-left mt-2" style="font-size: 20px;">title: <%= @post.title %></div><br>
 
       <div class="d-flex justify-content-end mt-2">
-        <%= link_to admin_customer_path(@post.customer) do %>
+        <%= link_to admin_customer_path(@post.customer), class: "link" do %>
           <%= image_tag @post.customer.get_profile_image, class: "rounded-circle", size:"45x45" %><br>
           <%= @post.customer.user_name %>
         <% end %>
@@ -31,7 +31,7 @@
         <%= link_to edit_admin_post_path(@post), class: "btn btn-sm btn-outline-dark ml-2" do %>
           <i class="fas fa-edit"></i>
         <% end %>
-        <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-dark ml-2" do %>
+        <%= link_to admin_post_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-dark ml-2" do %>
           <i class="fas fa-eraser"></i>
         <% end %>
       </div>

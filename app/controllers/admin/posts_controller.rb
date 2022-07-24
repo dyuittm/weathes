@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.page(params[:page])
@@ -28,6 +28,13 @@ class Admin::PostsController < ApplicationController
       render :edit
     end
   end
+
+  def destroy
+    @post.destroy
+    flash[:notice] = '投稿を削除しました'
+    redirect_to admin_posts_path
+  end
+
 
   private
   def post_params

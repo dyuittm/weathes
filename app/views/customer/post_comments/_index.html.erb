@@ -4,12 +4,12 @@
     <tr>
       <td>
         <% if admin_signed_in? %>
-          <%= link_to admin_customer_path(post_comment.customer) do %>
+          <%= link_to admin_customer_path(post_comment.customer), class: "link" do %>
             <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %><br>
             <%= post_comment.customer.user_name %>
           <% end %>
         <% else %>
-          <%= link_to customer_path(post_comment.customer) do %>
+          <%= link_to customer_path(post_comment.customer), class: "link" do %>
             <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %><br>
             <%= post_comment.customer.user_name %>
           <% end %>

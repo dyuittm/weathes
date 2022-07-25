@@ -15,11 +15,11 @@
         <% end %>
       <% end %>
       <% if post_comment.customer == current_customer %>
-        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm" do %>
           <i class="fas fa-eraser"></i>
         <% end %>
       <% elsif admin_signed_in? %>
-        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-outline-danger btn-sm" do %>
           <i class="fas fa-eraser"></i>
         <% end %>
       <% end %>

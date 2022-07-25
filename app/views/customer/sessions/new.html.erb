@@ -2,8 +2,9 @@
   <div class="row">
     <h3>-log in-</h3>
     <div class="col-md-12 mt-5">
+      <%= render "customer/shared/error_messages", resource: resource %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "customer/shared/error_messages", resource: resource %>
+
         <div class="form-group row">
           <%= f.label :メーアドレス, class: 'col-md-3 control-label' %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'rounded col-md-3' %>

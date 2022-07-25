@@ -42,20 +42,24 @@
   display: contents;
 }
 
-.wrapper{
+body {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
   min-height: 100vh;
-  position: relative;
-  padding-bottom: 120px;
-  box-sizing: border-box;
 }
 
-footer{
-  width: 100%;
-  background-color: #808080;
-  color: #fff;
+main {
+  background: #ffffff;
+  flex: 1;
+}
+
+footer {
+  margin-top: 20px;
+  background: #808080;
+  color: #ffffff;
+  height: 60px;
   text-align: center;
-  position: absolute;
-  bottom: 0;
 }
 
 .link{

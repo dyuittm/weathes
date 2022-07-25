@@ -34,10 +34,10 @@
           <%= render "customer/favorites/favorite-btn", post: @post %>
         </div>
         <% if @post.customer == current_customer %>
-          <%= link_to edit_post_path(@post), class: "btn btn-sm btn-outline-dark ml-2" do %>
+          <%= link_to edit_post_path(@post), class: "btn btn-sm btn-outline-success ml-2" do %>
             <i class="fas fa-edit"></i>
           <% end %>
-          <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-dark ml-2" do %>
+          <%= link_to @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-outline-danger ml-2" do %>
             <i class="fas fa-eraser"></i>
           <% end %>
         <% end %>

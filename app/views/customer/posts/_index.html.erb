@@ -27,7 +27,7 @@
           <%= l post.created_at, format: :short %>
         </td>
         <td>
-          <%= link_to truncate(post.title, length: 15), post, class: "link post_#{post.id}" %><br>
+          title: <%= link_to truncate(post.title, length: 15), post, class: "link post_#{post.id}" %><br>
           <%= truncate(post.body, length: 10) %><br>
         <td>
           <%= image_tag post.post_images[0], size:'70x70' %>

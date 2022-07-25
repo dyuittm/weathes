@@ -27,7 +27,7 @@ class Post < ApplicationRecord
     if content != ""
       Post.where('title LIKE ? OR body LIKE ?', '%'+content+'%', '%'+content+'%')
     else
-      Post..page(params[:page]).order(created_at: :desc)
+      Post.all
     end
   end
 

@@ -42,10 +42,20 @@
   display: contents;
 }
 
+.wrapper{
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 120px;
+  box-sizing: border-box;
+}
+
 footer{
+  width: 100%;
   background-color: #808080;
-  color: #FFF;
-  height: 150px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
 }
 
 .link{

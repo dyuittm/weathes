@@ -7,7 +7,7 @@ class Admin::CustomersController < ApplicationController
 
   def show
     @customer = Customer.find(params[:id])
-    @posts = @customer.posts.page(params[:page])
+    @posts = @customer.posts.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -17,8 +17,10 @@ class Admin::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to admin_customer_path, notice: "更新しました"
+      flash[:notice] = 'ユーザー情報を更新しました'
+      redirect_to admin_customer_path
     else
+      flash[:alert] = '更新できませんでした'
       render :edit
     end
   end

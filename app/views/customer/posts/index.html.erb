@@ -23,7 +23,7 @@
               </td>
               <td>
                 <%= post.customer.prefecture.name %><br>
-                <%= l post.created_at, format: :short %>
+                <%= l post.created_at %>
               </td>
               <td>
                 title: <%= link_to truncate(post.title, length: 20),post, class: "link post_#{post.id}" %><br>

@@ -2,7 +2,7 @@ class Admin::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).order(created_at: :desc)
   end
 
   def show
@@ -21,10 +21,10 @@ class Admin::PostsController < ApplicationController
     end
 
     if @post.update(post_params)
-      flash[:notice] = '投稿を変更しました'
+      flash[:notice] = '投稿を更新しました'
       redirect_to admin_post_path(@post)
     else
-      flash[:alert] = '変更できませんでした'
+      flash[:alert] = '更新できませんでした'
       render :edit
     end
   end

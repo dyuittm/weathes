@@ -1,4 +1,3 @@
-<h3>-post index-</h3>
 <table class="table mt-5">
   <thead class="table-dark text-light">
     <tr>
@@ -20,7 +19,7 @@
         </td>
         <td>
           <%= post.customer.prefecture.name %><br>
-          <%= l post.created_at, format: :short %>
+          <%= l post.created_at %>
         </td>
         <td>
           title: <%= link_to truncate(post.title, length: 15), admin_post_path(post), class: "link" %><br>
@@ -33,8 +32,7 @@
           <i class="far fa-comment-dots"></i><%= post.post_comments.count %>
         </td>
         <td>
-          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-          <%= post.favorites.count %>
+          <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><%= post.favorites.count %>
         </td>
       </tr>
     <% end %>

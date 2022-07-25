@@ -23,7 +23,7 @@
               </td>
               <td>
                 <%= post.customer.prefecture.name %><br>
-                <%= l post.created_at, format: :short %>
+                <%= l post.created_at %>
               </td>
               <td>
                 title: <%= link_to truncate(post.title, length: 20), admin_post_path(post), class: "link" %><br>
@@ -46,6 +46,7 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

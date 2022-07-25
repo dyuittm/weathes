@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 mt-3">
-      <h3 class="text-center">-follower users-</h3>
-      <% if @customers_followers.exists? %>
+      <h3 class="text-center">-follow users-</h3>
+      <% if @customers_followings.exists? %>
         <table class="table mt-5">
           <thead class="table-dark text-light">
             <tr>
@@ -13,7 +13,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @customers_followers.each do |customer| %>
+            <% @customers_followings.each do |customer| %>
               <tr>
                 <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: "100x100" %></td>
                 <td><%= customer.user_name %></td>
@@ -31,9 +31,10 @@
         <p class="text-center">ユーザーはいません</p>
       <% end %>
     </div>
+
     <div class="col-md-6 mt-3">
-      <h3 class="text-center">-follow users-</h3>
-      <% if @customers_followings.exists? %>
+      <h3 class="text-center">-follower users-</h3>
+      <% if @customers_followers.exists? %>
         <table class="table mt-5">
           <thead class="table-dark text-light">
             <tr>
@@ -44,7 +45,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @customers_followings.each do |customer| %>
+            <% @customers_followers.each do |customer| %>
               <tr>
                 <td><%= image_tag customer.get_profile_image, class: "rounded-circle", size: "100x100" %></td>
                 <td><%= customer.user_name %></td>

@@ -8,7 +8,12 @@
     </div>
     <div class='col-md-8'>
       <h3 class="text-center mt-3">-post index-</h3>
-      <%= render 'customer/posts/index', posts: @posts, customer: @customer %>
+      <div class="text-right">
+        <%= link_to favorites_path(@customer), class: "btn btn-outline-secondary text-dark" do %>
+          <i class="far fa-heart"></i>favorite
+        <% end %>
+      </div>
+      <%= render 'customer/posts/index', posts: @posts %>
     </div>
   </div>
 </div>

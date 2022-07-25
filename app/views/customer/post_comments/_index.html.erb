@@ -1,33 +1,28 @@
-<table>
-  <tbody>
-    <% post.post_comments.each do |post_comment| %>
-    <tr>
-      <td>
-        <% if admin_signed_in? %>
-          <%= link_to admin_customer_path(post_comment.customer), class: "link" do %>
-            <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %><br>
-            <%= post_comment.customer.user_name %>
-          <% end %>
-        <% else %>
-          <%= link_to customer_path(post_comment.customer), class: "link" do %>
-            <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %><br>
-            <%= post_comment.customer.user_name %>
-          <% end %>
+<div class="mb-2">
+  <% post.post_comments.each do |post_comment| %>
+    <p class="text-under"><%= post_comment.comment %></p>
+    <div class="d-flex justify-content-end">
+      <%= l post_comment.created_at%>
+      <% if admin_signed_in? %>
+        <%= link_to admin_customer_path(post_comment.customer), class: "link mr-1" do %>
+          <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %>
+          <%= post_comment.customer.user_name %>
         <% end %>
-      </td>
-      <td><%= post_comment.comment %></td>
-      <td>
-        <% if post_comment.customer == current_customer %>
-          <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
-            <i class="fas fa-eraser"></i>
-          <% end %>
-        <% elsif admin_signed_in? %>
-          <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
-            <i class="fas fa-eraser"></i>
-          <% end %>
+      <% else %>
+        <%= link_to customer_path(post_comment.customer), class: "link mr-1" do %>
+          <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "30x30" %>
+          <%= post_comment.customer.user_name %>
         <% end %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+      <% if post_comment.customer == current_customer %>
+        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+          <i class="fas fa-eraser"></i>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <%= link_to post_post_comment_path(post, post_comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" do %>
+          <i class="fas fa-eraser"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -10,14 +10,14 @@ class Customer::PostsController < ApplicationController
       redirect_to post_path(@post_new)
     else
       flash[:alert] = '投稿できませんでした'
-      @posts = Post.all
       @customer = current_customer
+      @posts = @customer.posts.page(params[:page]).order(created_at: :desc)
       render "customer/customers/show"
     end
   end
 
   def index
-    @posts = Post.page(params[:page])
+    @posts = Post.page(params[:page]).order(created_at: :desc)
   end
 
   def show

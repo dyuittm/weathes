@@ -34,7 +34,10 @@
 
 
 ## 【設計書】
+* ER図/Ulflow/フレームワーク
+[weathes.drawio.pdf](https://github.com/dyuittm/weathes/files/9195949/weathes.drawio.pdf)
 
+* アプリケーション詳細設計
 
 ## 【開発環境】
 - OS：Linux(CentOS)

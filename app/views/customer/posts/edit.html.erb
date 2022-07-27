@@ -8,14 +8,14 @@
         <div class="form-group">
           <% if @post.post_images.attached? %>
             <div style="width: 750px;" class="d-flex justify-content-center offset-md-1">
-            <% @post.post_images.each do |image| %>
-              <div style="display: flex; margin:5px 5px 5px 0;">
-                <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
-                <label for="image_ids_<%= image.id %>" >
-                  <%= image_tag image, size: '200x200' %>
-                </label>
-              </div>
-            <% end %>
+              <% @post.post_images.each do |image| %>
+                <div style="display: flex; margin:5px 5px 5px 0;">
+                  <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
+                  <label for="image_ids_<%= image.id %>" >
+                    <%= image_tag image, size: '200x200' %>
+                  </label>
+                </div>
+              <% end %>
             </div>
           <% end %>
           <p class="text-right mr-5">

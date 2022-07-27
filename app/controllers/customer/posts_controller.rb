@@ -31,6 +31,12 @@ class Customer::PostsController < ApplicationController
   end
 
   def update
+    @posts = Post.page(params[:page]).order(created_at: :desc)
+    image_count = params[:post][:image_ids]&.count || 0
+    if (@post.post_images.count == image_count && !params[:post][:post_images])
+      flash[:alert] = '変更できませんでした'
+      render :index and return
+    end
     if params[:post][:image_ids]
       params[:post][:image_ids].each do |image_id|
         image = @post.post_images.find(image_id)
@@ -43,8 +49,8 @@ class Customer::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash[:alert] = '変更できませんでした'
-      @posts = Post.page(params[:page]).order(created_at: :desc)
-      render :index
+      
+      render :edit
     end
 
   end

@@ -50,12 +50,12 @@
         <% end %>
       </div>
 
-      <div class="comment d-md-flex">
-        <div class="comments-area col-md-6 mt-4">
-          <%= render 'customer/post_comments/index', post: @post %>
-        </div>
-        <div class="new-comment col-md-6 mt-3">
+      <div>
+        <div class="new-comment col-md-7 mt-5">
           <%= render 'customer/post_comments/form', post: @post, post_comment: @post_comment %>
+        </div>
+        <div class="comments-area col-md-7 mt-4">
+          <%= render 'customer/post_comments/index', post: @post %>
         </div>
       </div>
     </div>

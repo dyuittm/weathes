@@ -1,6 +1,6 @@
-<div class="mb-2">
-  <% post.post_comments.each do |post_comment| %>
-    <p class="text-under"><%= post_comment.comment %></p>
+<div class="mt-4 mb-2">
+  <% post.post_comments.reverse.each do |post_comment| %>
+    <p class="comment-under"><%= post_comment.comment %></p>
     <div class="d-flex justify-content-end">
       <%= l post_comment.created_at%>
       <% if admin_signed_in? %>

@@ -38,6 +38,7 @@
 [weathes.drawio.pdf](https://github.com/dyuittm/weathes/files/9195949/weathes.drawio.pdf)
 
 * アプリケーション詳細設計
+[weathes_アプケーション詳細設計.pdf](https://github.com/dyuittm/weathes/files/9196059/weathes_.pdf)
 
 ## 【開発環境】
 - OS：Linux(CentOS)

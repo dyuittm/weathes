@@ -34,7 +34,6 @@ class Customer::PostsController < ApplicationController
     if params[:post][:image_ids]
       params[:post][:image_ids].each do |image_id|
         image = @post.post_images.find(image_id)
-        #byebug
         image.purge
       end
     end
@@ -44,7 +43,8 @@ class Customer::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash[:alert] = '変更できませんでした'
-      render :edit
+      @posts = Post.page(params[:page]).order(created_at: :desc)
+      render :index
     end
 
   end

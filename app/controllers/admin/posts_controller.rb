@@ -25,7 +25,8 @@ class Admin::PostsController < ApplicationController
       redirect_to admin_post_path(@post)
     else
       flash[:alert] = '更新できませんでした'
-      render :edit
+      @posts = Post.page(params[:page]).order(created_at: :desc)
+      render :index
     end
   end
 

@@ -49,8 +49,7 @@ class Customer::PostsController < ApplicationController
       redirect_to post_path(@post)
     else
       flash[:alert] = '変更できませんでした'
-      
-      render :edit
+      render :index
     end
 
   end

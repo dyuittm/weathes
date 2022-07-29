@@ -1,13 +1,15 @@
 <%= render "customer/shared/error_messages", resource: @post_new %>
-<div class='container-fluid'>
+<div class='container-fuild'>
   <div class='row'>
     <div class='col-md-4 mt-3'>
       <%= render 'customer/prefectures/prefecture', customer: @customer %>
-      <%= render 'customer/customers/info', customer: @customer %>
-      <%= render 'form', post: @post_new %>
+      <div class='col-md-offset-2 float-right mt-3'>
+        <%= render 'customer/customers/info', customer: @customer %>
+        <%= render 'form', post: @post_new %>
+      </div>
     </div>
 
-    <div class='col-md-8 mt-3'>
+    <div class='col-md-7 mt-3'>
   		<h3 class="text-center">-post detail-</h3>
       <div class="float-left mt-2">title: <%= @post.title %></div><br>
       <div class="d-flex justify-content-end mt-2">
@@ -19,7 +21,7 @@
 
       <div class="d-flex align-content-start flex-wrap">
   		  <% @post.post_images.each do |image| %>
-  		    <%= image_tag image, size:"210x270", class: "rounded mr-3 mb-2" %>
+  		    <%= image_tag image, size:"300x350", class: "rounded mr-5 ml-3 mb-3" %>
   		  <% end %>
   		</div>
 
@@ -50,11 +52,11 @@
         <% end %>
       </div>
 
-      <div>
-        <div class="new-comment col-md-7 mt-5">
+      <div class="col-md-7 float-right">
+        <div class="new-comment mt-5">
           <%= render 'customer/post_comments/form', post: @post, post_comment: @post_comment %>
         </div>
-        <div class="comments-area col-md-7 mt-4">
+        <div class="comments-area mt-4">
           <%= render 'customer/post_comments/index', post: @post %>
         </div>
       </div>

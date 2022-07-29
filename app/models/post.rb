@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  FILE_NUMBER_LIMIT = 5
+  FILE_NUMBER_LIMIT = 4
 
   belongs_to :customer
   has_many :post_comments, dependent: :destroy
@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   end
 
   def validate_number_of_files
-    if post_images.length >= FILE_NUMBER_LIMIT
+    if post_images.length > FILE_NUMBER_LIMIT
       errors.add(:post_images, "に添付できる画像は4件までです。")
     elsif post_images.length == 0
       errors.add(:post_images, "画像が添付されていません。")

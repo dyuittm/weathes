@@ -22,7 +22,12 @@
             選択済みの画像<br>
             （削除する画像にチェックをつけてください）
           </p>
-          <%= f.file_field :post_images, multiple: true, class: 'form-control-file offset-md-1' %>
+          <% if @post.post_images.count <= 3 %>
+            <%= f.file_field :post_images, multiple: true, class: 'form-control-file offset-md-1' %>
+            <p style="color: #F00;  margin-left: 90px;">※画像の登録は最大4枚までです</p>
+          <% else%>
+            <p class="text-center" style="color: #F00;">※画像の登録は4枚までですので、変更したい画像を削除してから再度登録を行ってください。</p>
+          <% end %>
         </div>
 
         <div class="form-group row">

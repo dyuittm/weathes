@@ -16,8 +16,8 @@ class Admin::PostsController < ApplicationController
     @posts = Post.page(params[:page]).order(created_at: :desc)
     image_count = params[:post][:image_ids]&.count || 0
     if (@post.post_images.count == image_count && !params[:post][:post_images])
-      flash[:alert] = '変更できませんでした'
-      render :index and return
+      flash[:alert] = '画像の登録がないため変更できませんでした'
+      render :edit and return
     end
     if params[:post][:image_ids]
       params[:post][:image_ids].each do |image_id|
@@ -31,7 +31,7 @@ class Admin::PostsController < ApplicationController
       redirect_to admin_post_path(@post)
     else
       flash[:alert] = '更新できませんでした'
-      render :index
+      render :edit
     end
   end
 

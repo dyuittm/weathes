@@ -1,12 +1,14 @@
 <%= render "customer/shared/error_messages", resource: @post_new %>
-<div class='container-fluid'>
+<div class='container-fuild'>
   <div class='row'>
     <div class='col-md-4 mt-3'>
       <%= render 'customer/prefectures/prefecture', customer: @customer %>
-      <%= render 'customer/customers/info', customer: @customer %>
-      <%= render 'customer/posts/form', post: @post_new %>
+      <div class='col-md-offset-2 float-right mt-3'>
+        <%= render 'customer/customers/info', customer: @customer %>
+        <%= render 'customer/posts/form', post: @post_new %>
+      </div>
     </div>
-    <div class='col-md-8'>
+    <div class='col-md-7'>
       <h3 class="text-center mt-3">-post index-</h3>
       <div class="text-right">
         <%= link_to favorites_path(@customer), class: "btn btn-outline-secondary text-dark" do %>

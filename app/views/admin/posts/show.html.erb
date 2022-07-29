@@ -1,5 +1,5 @@
 <h3 class="text-center">-post detail-</h3>
-<div class='container-fluid'>
+<div class='container'>
   <div class='row'>
     <div class='col-md-7 mt-3'>
 
@@ -36,10 +36,9 @@
         <% end %>
       </div>
 
-      <div class="comment mt-5">
-        <div class="comments-area col-md-10 mb-4">
-          <%= render 'customer/post_comments/index', post: @post %>
-        </div>
+      <div class="comments-area col-md-10 float-right mb-4">
+        <%= render 'customer/post_comments/index', post: @post %>
+      </div>
       </div>
     </div>
   </div>

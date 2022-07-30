@@ -43,11 +43,22 @@ class Customer::PostsController < ApplicationController
         image.purge
       end
     end
-
     if @post.update(post_params)
       flash[:notice] = '投稿を更新しました'
       redirect_to post_path(@post)
     else
+      #バリデーション/エラーメッセージ
+      error_messages = @post.errors.messages
+      #再度@postを取ることで余剰分の画像を非表示
+      @post = Post.find(params[:id])
+      #上記の＠postの取得でバリデーションが無効になるため、表示させるため取得
+      #key => model values => modelに対してのいくつかのエラーメッセージ（エラーの種類が複数あるため複数形）
+      #更にvalueで一つづつ表示させる
+      error_messages.each{|key, values|
+        values.each do |value|
+          @post.errors.add(key, value)
+        end
+      }
       flash[:alert] = '更新できませんでした'
       render :edit
     end

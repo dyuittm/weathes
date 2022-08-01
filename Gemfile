@@ -69,4 +69,6 @@ group :development, :test do
   gem 'pry-rails'
 end
 
-gem "net-smtp"
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
